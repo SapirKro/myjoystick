@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MyThreadPool {
-    // Java program to illustrate
+// Java program to illustrate
 // ThreadPool
 
     // Task class to be executed (Step 1)
@@ -53,6 +53,7 @@ public class MyThreadPool {
             }
         }
     }
+
     public static class Test
     {
         // Maximum number of threads in thread pool

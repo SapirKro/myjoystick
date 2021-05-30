@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.journaldev.androidmvvmbasics.model.MyThreadPool;
-
+import com.journaldev.androidmvvmbasics.model.Server;
 import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
 import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
@@ -24,16 +24,18 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setViewModel(new LoginViewModel());
         activityMainBinding.executePendingBindings();
+       Server myserver=new Server();
+       myserver.connect();
        /// MyThreadPool tp=new MyThreadPool();
         System.out.print("first statement. ");
-       try {
+       /*try {
             MyThreadPool.Test dd= new MyThreadPool.Test();
             String[] args={"sa"};
             dd.mytes1(args);
             System.out.print("first statement. ");
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
