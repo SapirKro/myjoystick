@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+import java.util.concurrent.TimeUnit;
 public class Server {
 
    public void connect(){
@@ -29,11 +29,13 @@ public class Server {
             ////out.println( "GET " + path + " HTTP/1.0" );
             out.println();
             int i=0;
-            while(i<100){
-                out.print("set /controls/flight/aileron 1\r\n");
-                System.out.println( "set /controls/flight/aileron 1");
-
+            TimeUnit.SECONDS.sleep(5);
+            while(i<100000000){
+                out.print("set /controls/engines/current-engine/throttle 1\r\n");
+                out.print("set /controls/flight/rudder 1\r\n");
+                System.out.println( "set /controls/engines/current-engine/throttle 1");
             out.flush();
+             ///   TimeUnit.SECONDS.sleep(1);
             i++;
             }
             // Read data from the server until we finish reading the document
