@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
+import com.journaldev.androidmvvmbasics.model.MyThreadPool;
 
 import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
@@ -18,11 +18,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.print("first statement. ");
         ///sapir
         super.onCreate(savedInstanceState);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setViewModel(new LoginViewModel());
         activityMainBinding.executePendingBindings();
+       /// MyThreadPool tp=new MyThreadPool();
+        System.out.print("first statement. ");
+       try {
+            MyThreadPool.Test dd= new MyThreadPool.Test();
+            String[] args={"sa"};
+            dd.mytes1(args);
+            System.out.print("first statement. ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
