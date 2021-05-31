@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
- <layout xmlns:android="http://schemas.android.com/apk/res/android"
+ <layout xmlns:custom="http://schemas.android.com/apk/res-auto"
+     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
@@ -48,10 +49,12 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="throttle" />
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
+                android:text="Throttle" />
 
             <SeekBar
                 android:id="@+id/seekBar2"
@@ -59,11 +62,26 @@
                 android:layout_height="match_parent" />
 
 
+            <io.github.controlwear.virtual.joystick.android.JoystickView
+                android:id="@+id/joystickView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                custom:JV_backgroundColor="#252525"
+                custom:JV_borderColor="#000000"
+                custom:JV_borderWidth="4dp"
+                custom:JV_buttonColor="#A3060D"
+                custom:JV_buttonSizeRatio="15%"
+                custom:JV_fixedCenter="false" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
 
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
                 android:text="Rudder" />
 
             <SeekBar
@@ -71,32 +89,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="298dp"
-                android:orientation="vertical"
-               >
-
-                <SeekBar
-                    android:id="@+id/seekBar1"
-                    android:layout_width="314dp"
-                    android:layout_height="wrap_content"
-                    android:rotation="270" />
-
-                <io.github.controlwear.virtual.joystick.android.JoystickView
-                    xmlns:custom="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/joystickView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    custom:JV_buttonColor="#A3060D"
-                    custom:JV_buttonSizeRatio="15%"
-                    custom:JV_borderColor="#000000"
-                    custom:JV_backgroundColor="#252525"
-                    custom:JV_borderWidth="4dp"
-                    custom:JV_fixedCenter="false"/>
-
-            </LinearLayout>
 
 
         </LinearLayout>
