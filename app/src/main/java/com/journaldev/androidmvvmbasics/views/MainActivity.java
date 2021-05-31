@@ -13,6 +13,8 @@ import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
 import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
 
+import io.github.controlwear.virtual.joystick.android.JoystickView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setViewModel(new LoginViewModel());
         activityMainBinding.executePendingBindings();
-       Server myserver=new Server();
-       myserver.connect();
+        JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+
+
+     ///  Server myserver=new Server();
+      //// myserver.connect();
        /// MyThreadPool tp=new MyThreadPool();
         System.out.print("first statement. ");
        /*try {

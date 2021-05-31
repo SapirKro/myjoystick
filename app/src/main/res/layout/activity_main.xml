@@ -46,23 +46,59 @@
                 android:text="LOGIN"
                 bind:toastMessage="@{viewModel.toastMessage}" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="throttle" />
+
             <SeekBar
                 android:id="@+id/seekBar2"
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="match_parent" />
 
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:text="Rudder" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="298dp">
+                android:layout_width="match_parent"
+                android:layout_height="298dp"
+                android:orientation="vertical"
+               >
 
                 <SeekBar
                     android:id="@+id/seekBar1"
-                    android:layout_width="217dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="314dp"
+                    android:layout_height="wrap_content"
                     android:rotation="270" />
 
+                <io.github.controlwear.virtual.joystick.android.JoystickView
+                    xmlns:custom="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/joystickView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    custom:JV_buttonColor="#FF6E40"
+                    custom:JV_buttonSizeRatio="15%"
+                    custom:JV_borderColor="#00796B"
+                    custom:JV_backgroundColor="#009688"
+                    custom:JV_borderWidth="4dp"
+                    custom:JV_fixedCenter="false"/>
+
             </LinearLayout>
+
+
         </LinearLayout>
 
 
