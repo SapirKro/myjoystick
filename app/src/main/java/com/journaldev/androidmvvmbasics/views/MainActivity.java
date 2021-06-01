@@ -5,10 +5,11 @@ import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.journaldev.androidmvvmbasics.model.MyThreadPool;
-import com.journaldev.androidmvvmbasics.model.Server;
+import com.journaldev.androidmvvmbasics.model.clientToServer;
 import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
 import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.print("first statement. ");
+Log.d("p","create");
+        Log.d("p","first statement");
         ///sapir
         super.onCreate(savedInstanceState);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -29,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
 
 
-     ///  Server myserver=new Server();
+
+        clientToServer c = new clientToServer();
+       c.connectToServer();
+        /*   c.LoadIO();
+        c.sendData(1);
+        c.closeClient();*/
       //// myserver.connect();
        /// MyThreadPool tp=new MyThreadPool();
         System.out.print("first statement. ");
