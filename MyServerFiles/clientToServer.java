@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-
+///fgfs --altitude=5000 --heading=0 --vc=110
 // Your First Program
 
 class clientToServer {
-    public Socket fg;
-    public BufferedReader in;
-    public PrintWriter out;
-
+    Socket fg;
+    BufferedReader in;
+    PrintWriter out;
+    boolean isConnect;
     clientToServer() {
-
+        isConnect=false;
     }
 
     public void connectToServer() {
@@ -23,7 +23,7 @@ class clientToServer {
         while (!isConnect) {
             try {
                 System.out.println("waiting for the server...");
-                fg = new Socket("localhost", 1234);
+                fg = new Socket("localhost", 6400);
                 isConnect = fg.isConnected();
                 if (isConnect) {
                     System.out.println("connected to server!");
@@ -36,7 +36,6 @@ class clientToServer {
                     System.out.println("Error InterruptedException e1");
                     e1.printStackTrace();
                 }
-              
 
             }
 
@@ -66,16 +65,31 @@ class clientToServer {
         }
         String line;
         try {
+            System.out.println("sending data to the server");
+            int i = 0;
+
             while ((line = in.readLine()) != null) {
+                if (i == 0) {
+                    System.out.println("set /controls/flight/aileron " + v);
+                    System.out.println("set /controls/flight/elevator " + v);
+                }
                 /// out.println(line);
-                System.out.println("sending data to the server");
-                System.out.flush();
-                System.out.println("set /controls/flight/aileron " + v);
-                System.out.flush();
+                /// System.out.println(line);
+                /// System.out.println("sending data to the server");
+                /// System.out.flush();
+                // System.out.println("set /controls/flight/aileron " + v);
+                // System.out.flush();
                 out.print("set /controls/flight/aileron " + v + "\r\n");
-                /// out.flush();
+                out.flush();
+                out.print("set /controls/flight/elevator " + v + "\r\n");
                 out.flush();
                 Thread.sleep(100);
+                i++;
+                if (i == 20) {
+                    v = v * (-1);
+                    i = 0;
+
+                }
             }
         } catch (IOException e) {
             System.out.println("Error sending data IOException e");
