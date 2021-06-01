@@ -36,7 +36,8 @@ public class MyThreadPool {
 
                         clientToServer c = new clientToServer();
                         c.connectToServer();
-
+c.LoadIO();
+c.sendData(1);
                         Date d = new Date();
                         SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss");
                         System.out.println("Initialization Time for"

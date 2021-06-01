@@ -36,7 +36,7 @@ public class clientToServer {
             try {
                 Log.d("clientToServer","waiting for the server...");
                 System.out.println("waiting for the server...");
-                fg = new Socket("10.0.2.2", 5400);
+                fg = new Socket("192.168.1.40", 5400);
                 isConnect = fg.isConnected();
                 if (isConnect) {
                     Log.d("clientToServer","connected to server!");
@@ -60,12 +60,12 @@ public class clientToServer {
     }
 
     public void LoadIO() {
-        try {
+      /*  try {
             in = new BufferedReader(new FileReader("reg_flight.csv"));
         } catch (FileNotFoundException e) {
             System.out.println("Error loading input to server FileNotFoundException e");
             /// e.printStackTrace();
-        }
+        }*/
         try {
             out = new PrintWriter(fg.getOutputStream());
         } catch (IOException e) {
@@ -79,12 +79,12 @@ public class clientToServer {
             System.out.println("v value wrong");
             return;
         }
-        String line;
+        String line="stuff";
         try {
             System.out.println("sending data to the server");
             int i = 0;
 
-            while ((line = in.readLine()) != null) {
+            while (line != null) {
                 if (i == 0) {
                     System.out.println("set /controls/flight/aileron " + v);
                     System.out.println("set /controls/flight/elevator " + v);
@@ -106,11 +106,8 @@ public class clientToServer {
                     i = 0;
 
                 }
-            }
-        } catch (IOException e) {
-            System.out.println("Error sending data IOException e");
-            // e.printStackTrace();
-        } catch (InterruptedException e) {
+            }}
+        catch (InterruptedException e) {
             System.out.println("Error sending data InterruptedException e");
             /// e.printStackTrace();
         }
