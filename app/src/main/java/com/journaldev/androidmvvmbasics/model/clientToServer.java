@@ -44,9 +44,11 @@ public class clientToServer {
                 }
             } catch (IOException e) {
                 try {
+                    Log.d("clientToServer","time out.trying again  to connect in 1 second...");
                     System.out.println("time out.trying again  to connect in 1 second...");
                     Thread.sleep(1000);
                 } catch (InterruptedException e1) {
+                    Log.d("clientToServer","Error InterruptedException e1");
                     System.out.println("Error InterruptedException e1");
                     e1.printStackTrace();
                 }

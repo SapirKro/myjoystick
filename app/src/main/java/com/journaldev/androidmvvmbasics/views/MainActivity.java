@@ -14,6 +14,9 @@ import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
 import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
 
+import java.io.IOException;
+import java.net.Socket;
+
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 
@@ -32,23 +35,22 @@ Log.d("p","create");
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
 
 
-
-        clientToServer c = new clientToServer();
-       c.connectToServer();
+        ///    clientToServer c = new clientToServer();
+      /// c.connectToServer();
         /*   c.LoadIO();
         c.sendData(1);
         c.closeClient();*/
       //// myserver.connect();
        /// MyThreadPool tp=new MyThreadPool();
         System.out.print("first statement. ");
-       /*try {
+      try {
             MyThreadPool.Test dd= new MyThreadPool.Test();
             String[] args={"sa"};
             dd.mytes1(args);
             System.out.print("first statement. ");
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 

@@ -1,9 +1,14 @@
 package com.journaldev.androidmvvmbasics.model;
+import java.io.IOException;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import java.net.Socket;
+
+import com.journaldev.androidmvvmbasics.model.clientToServer;
 public class MyThreadPool {
 // Java program to illustrate
 // ThreadPool
@@ -24,10 +29,14 @@ public class MyThreadPool {
         {
             try
             {
-                for (int i = 0; i<=5; i++)
+                for (int i = 0; i<=1; i++)
                 {
                     if (i==0)
                     {
+
+                        clientToServer c = new clientToServer();
+                        c.connectToServer();
+
                         Date d = new Date();
                         SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss");
                         System.out.println("Initialization Time for"
@@ -64,7 +73,7 @@ public class MyThreadPool {
 
             // creates five tasks
             Runnable r1 = new Task("task 1");
-            Runnable r2 = new Task("task 2");
+          //// Runnable r2 = new Task("task 2");
 
 
             // creates a thread pool with MAX_T no. of
@@ -73,7 +82,7 @@ public class MyThreadPool {
 
             // passes the Task objects to the pool to execute (Step 3)
             pool.execute(r1);
-            pool.execute(r2);
+           //// pool.execute(r2);
 
 
             // pool shutdown ( Step 4)
