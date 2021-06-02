@@ -36,7 +36,7 @@ public class clientToServer {
         Log.d("clientToServer","sserver...");
     }
 
-    public void connectToServer() {
+    public int connectToServer() {
 
         boolean isConnect = false;
         while (!isConnect) {
@@ -49,7 +49,9 @@ public class clientToServer {
                     Log.d("clientToServer","connected to server!");
                     System.out.println("connected to server!");
                     isConnect=true;
+                    return 1;
                 }
+                return 0;
             } catch (IOException e) {
                 try {
                     Log.d("clientToServer","time out.trying again  to connect in 1 second...");
@@ -64,7 +66,7 @@ public class clientToServer {
             }
 
         }
-
+return 0;
     }
 
     public void LoadIO() {
@@ -92,7 +94,7 @@ public class clientToServer {
             System.out.println("sending data to the server");
             int i = 0;
 int j=0;
-            while (j<5) {
+            while (j<7) {
                 if (i == 0) {
                     System.out.println("set /controls/flight/aileron " + v);
                     System.out.println("set /controls/flight/elevator " + v);
@@ -138,13 +140,15 @@ int j=0;
         }
     }
 
-    public boolean isClientConnet( ExecutorService pool1) {
+    public int isClientConnet( ExecutorService pool1) {
         final CountDownLatch latch = new CountDownLatch(1);
-        Runnable r1 = new MyThreadPool.connectTask(this);
-        Runnable r2 = new MyThreadPool.LoadIOTask(this);
-        final int[] value = new int[1];
-        value[0]=0;
-        MyThreadPool.Task t=new MyThreadPool.conncetis(this,value,latch);
+        ConnectStatus s=new ConnectStatus();
+        s.mystate=0;
+        Runnable r1 = new MyThreadPool.connectTask(this,s);
+        Runnable r2 = new MyThreadPool.LoadIOTask(this,s);
+        final int[] cddd = new int[1];
+        cddd[0]=0;
+        MyThreadPool.Task t=new MyThreadPool.conncetis(this,cddd,latch,s);
         pool1.execute(r1);
         pool1.execute(r2);
         pool1.execute(t);
@@ -153,13 +157,16 @@ int j=0;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        int num= value[0];
-        boolean       s= t.state;
 
-  return s;
+        int num= s.mystate;
+
+  return num;
     }
-    public boolean returnConnetstatus( ) {
-        return this.isConnect;
+    public int returnConnetstatus( ) {
+        if(this.isConnect){
+            return 1;
+        }
+        return 0;
     }
 
     public void setIP(String ip1) {

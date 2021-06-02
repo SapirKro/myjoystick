@@ -17,12 +17,14 @@ public class MyThreadPool {
     // Task class to be executed (Step 1)
     public static class Task implements Runnable {
        public clientToServer c;
-       boolean state;
+      int state;
         private String name;
+        ConnectStatus s2;
 
-        public Task(clientToServer c1)
+        public Task(clientToServer c1,ConnectStatus s1)
         {
             this.c=c1;
+            this.s2=s1;
         }
 
 
@@ -71,20 +73,26 @@ c.sendData(1);
     }
     public static class connectTask extends Task {
 
-        public connectTask(clientToServer c1) {
-            super(c1);
+        public connectTask(clientToServer c1, ConnectStatus s1) {
+            super(c1,s1);
         }
         public void run()
         {
-            this.c.connectToServer();
-            this.state=c.returnConnetstatus();
+            int num=this.c.connectToServer();
+            if(num==1){
+                this.s2.mystate=1;
+            }
+            else{
+                this.s2.mystate=0;
+            }
+
 
         }
     }
     public static class LoadIOTask extends Task {
 
-        public LoadIOTask(clientToServer c1) {
-            super(c1);
+        public LoadIOTask(clientToServer c1,ConnectStatus s1) {
+            super(c1,s1);
         }
         public void run()
         {
@@ -93,8 +101,8 @@ c.sendData(1);
     }
     public static class CloseTask extends Task {
 
-        public CloseTask(clientToServer c1) {
-            super(c1);
+        public CloseTask(clientToServer c1,ConnectStatus s1) {
+            super(c1,s1);
         }
         public void run()
         {
@@ -106,11 +114,13 @@ c.sendData(1);
 
     public static class sendData extends Task {
 int v;
-        public sendData(clientToServer c1,int value) {
+        public sendData(clientToServer c1,int value,ConnectStatus s1) {
 
-            super(c1);
+            super(c1,s1);
             this.v=value;
         }
+
+
         public void run()
         {
             this.c.sendData(v);
@@ -124,9 +134,9 @@ int v;
     public static class conncetis extends Task {
         final int[] value;
         final CountDownLatch latch;
-        public conncetis(clientToServer c1,final int[] value1 ,final CountDownLatch latch1 ) {
+        public conncetis(clientToServer c1,final int[] value1 ,final CountDownLatch latch1,ConnectStatus s1 ) {
 
-            super(c1);
+            super(c1,s1);
            this.value=value1;
            this.latch=latch1;
 
@@ -134,15 +144,13 @@ int v;
         @Override
         public void run()
         {
-            this.state=c.returnConnetstatus();
-            this.value[0]=1;
+
+
+            this.value[0]=s2.mystate;
             latch.countDown();
 
         }
-        public  boolean getValue()
-        {
-           return this.state;
-        }
+
     }
 
     public static class Test
@@ -153,7 +161,8 @@ int v;
         public static void mytes1(String[] args)
         {
 
-            // creates five tasks
+            // creates five ta0\
+            /*
             clientToServer c = new clientToServer();
             Runnable r1 = new connectTask(c);
             Runnable r2 = new LoadIOTask(c);
@@ -174,7 +183,7 @@ int v;
 
 
             // pool shutdown ( Step 4)
-            pool.shutdown();
+            pool.shutdown();*/
         }
     }
 

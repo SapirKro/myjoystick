@@ -4,13 +4,16 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.journaldev.androidmvvmbasics.BR;
+import com.journaldev.androidmvvmbasics.model.ConnectStatus;
 import com.journaldev.androidmvvmbasics.model.MyThreadPool;
 import com.journaldev.androidmvvmbasics.model.User;
 import com.journaldev.androidmvvmbasics.model.clientToServer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+class Status{
+    public int mystate;
+}
 public class LoginViewModel extends BaseObservable {
     private User user;
     private clientToServer c;
@@ -56,12 +59,12 @@ public class LoginViewModel extends BaseObservable {
     }
 
     public void onLoginClicked() {
-
-        if (c.isClientConnet(this.pool)){      ///  if (user.isInputDataValid())
+int status=c.isClientConnet(this.pool);
+        if (status==1){      ///  if (user.isInputDataValid())
             setToastMessage(successMessage);
-        /*    ExecutorService pool = Executors.newFixedThreadPool(1);
-            Runnable r1 = new MyThreadPool.sendData(c,1);
-            pool.execute(r1);*/
+            ConnectStatus s1=new ConnectStatus();
+            Runnable r1 = new MyThreadPool.sendData(c,1,s1);
+            pool.execute(r1);
         }
         else{            setToastMessage(errorMessage);}
     }
