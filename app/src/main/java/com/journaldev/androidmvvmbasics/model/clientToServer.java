@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics.model;
+ package com.journaldev.androidmvvmbasics.model;
 
 import android.util.Log;
 
@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,12 +22,16 @@ import java.net.Socket;
 // Your First Program
 
 public class clientToServer {
+    String IP;
+    int port;
     Socket fg;
     BufferedReader in;
     PrintWriter out;
     boolean isConnect;
 
     public clientToServer() {
+        this.IP="192.168.1.40";
+        this.port=5400;
         isConnect=false;
         Log.d("clientToServer","sserver...");
     }
@@ -36,11 +43,12 @@ public class clientToServer {
             try {
                 Log.d("clientToServer","waiting for the server...");
                 System.out.println("waiting for the server...");
-                fg = new Socket("192.168.1.40", 5400);
+                fg = new Socket(this.IP, this.port);
                 isConnect = fg.isConnected();
                 if (isConnect) {
                     Log.d("clientToServer","connected to server!");
                     System.out.println("connected to server!");
+                    isConnect=true;
                 }
             } catch (IOException e) {
                 try {
@@ -83,8 +91,8 @@ public class clientToServer {
         try {
             System.out.println("sending data to the server");
             int i = 0;
-
-            while (line != null) {
+int j=0;
+            while (j<5) {
                 if (i == 0) {
                     System.out.println("set /controls/flight/aileron " + v);
                     System.out.println("set /controls/flight/elevator " + v);
@@ -104,6 +112,7 @@ public class clientToServer {
                 if (i == 20) {
                     v = v * (-1);
                     i = 0;
+                    j++;
 
                 }
             }}
@@ -115,18 +124,49 @@ public class clientToServer {
 
     public void closeClient() {
         out.close();
-        try {
+      /*  try {
             in.close();
         } catch (IOException e) {
             System.out.println("Error closing  BufferedReader IOException e");
             // e.printStackTrace();
-        }
+        }*/
         try {
             fg.close();
         } catch (IOException e) {
             System.out.println("Error closing Socket IOException e");
             /// e.printStackTrace();
         }
+    }
+
+    public boolean isClientConnet( ExecutorService pool1) {
+        final CountDownLatch latch = new CountDownLatch(1);
+        Runnable r1 = new MyThreadPool.connectTask(this);
+        Runnable r2 = new MyThreadPool.LoadIOTask(this);
+        final int[] value = new int[1];
+        value[0]=0;
+        MyThreadPool.Task t=new MyThreadPool.conncetis(this,value,latch);
+        pool1.execute(r1);
+        pool1.execute(r2);
+        pool1.execute(t);
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int num= value[0];
+        boolean       s= t.state;
+
+  return s;
+    }
+    public boolean returnConnetstatus( ) {
+        return this.isConnect;
+    }
+
+    public void setIP(String ip1) {
+        this.IP=ip1;
+    }
+    public void setPort(int port1) {
+        this.port=port1;
     }
 /*
     public static void main(String[] args) {

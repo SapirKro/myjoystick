@@ -16,6 +16,8 @@ import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -33,8 +35,19 @@ Log.d("p","create");
         activityMainBinding.setViewModel(new LoginViewModel());
         activityMainBinding.executePendingBindings();
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+/*
+        clientToServer c = new clientToServer();
+        Runnable r1 = new MyThreadPool.connectTask(c);
+        Runnable r2 = new MyThreadPool.LoadIOTask(c);
+        Runnable r3 = new MyThreadPool.sendData(c,1);
+        Runnable r4 = new MyThreadPool.CloseTask(c);
+        ExecutorService pool = Executors.newFixedThreadPool(1);
 
 
+        pool.execute(r1);
+        pool.execute(r2);
+        pool.execute(r3);
+        pool.execute(r4);*/
         ///    clientToServer c = new clientToServer();
       /// c.connectToServer();
         /*   c.LoadIO();
@@ -42,6 +55,7 @@ Log.d("p","create");
         c.closeClient();*/
       //// myserver.connect();
        /// MyThreadPool tp=new MyThreadPool();
+        /*
         System.out.print("first statement. ");
       try {
             MyThreadPool.Test dd= new MyThreadPool.Test();
@@ -50,7 +64,7 @@ Log.d("p","create");
             System.out.print("first statement. ");
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
