@@ -30,7 +30,7 @@ public class clientToServer {
     boolean isConnect;
 
     public clientToServer() {
-        this.IP="192.168.1.40";
+        this.IP="192.168.1.46";
         this.port=5400;
         isConnect=false;
         Log.d("clientToServer","sserver...");
@@ -43,7 +43,7 @@ public class clientToServer {
             try {
                 Log.d("clientToServer","waiting for the server...");
                 System.out.println("waiting for the server...");
-                fg = new Socket(this.IP, this.port);
+                fg = new Socket("192.168.1.46", 5400);
                 isConnect = fg.isConnected();
                 if (isConnect) {
                     Log.d("clientToServer","connected to server!");
@@ -84,20 +84,24 @@ return 0;
         }
     }
 
-    public void sendData(int v) {
-        if ((v > 1) || (v < (-1))) {
+    public void sendData(double x,double y) {
+        if ((x > 1) || (x < (-1))) {
+            System.out.println("v value wrong");
+            return;
+        }
+        if ((y > 1) || (y < (-1))) {
             System.out.println("v value wrong");
             return;
         }
         String line="stuff";
-        try {
+
             System.out.println("sending data to the server");
             int i = 0;
-int j=0;
-            while (j<7) {
+            int j=0;
+           //// while (j<7) {
                 if (i == 0) {
-                    System.out.println("set /controls/flight/aileron " + v);
-                    System.out.println("set /controls/flight/elevator " + v);
+                    System.out.println("set /controls/flight/aileron " + x);
+                    System.out.println("set /controls/flight/elevator " + y);
                 }
                 /// out.println(line);
                 /// System.out.println(line);
@@ -105,23 +109,20 @@ int j=0;
                 /// System.out.flush();
                 // System.out.println("set /controls/flight/aileron " + v);
                 // System.out.flush();
-                out.print("set /controls/flight/aileron " + v + "\r\n");
+                out.print("set /controls/flight/aileron " + x + "\r\n");
                 out.flush();
-                out.print("set /controls/flight/elevator " + v + "\r\n");
+                out.print("set /controls/flight/elevator " + y + "\r\n");
                 out.flush();
-                Thread.sleep(100);
-                i++;
+               //// Thread.sleep(100);
+                /*i++;
                 if (i == 20) {
                     v = v * (-1);
                     i = 0;
                     j++;
 
-                }
-            }}
-        catch (InterruptedException e) {
-            System.out.println("Error sending data InterruptedException e");
-            /// e.printStackTrace();
-        }
+                }*/
+
+
     }
 
     public void closeClient() {
@@ -140,28 +141,6 @@ int j=0;
         }
     }
 
-    public int isClientConnet( ExecutorService pool1) {
-        final CountDownLatch latch = new CountDownLatch(1);
-        ConnectStatus s=new ConnectStatus();
-        s.mystate=0;
-        Runnable r1 = new MyThreadPool.connectTask(this,s);
-        Runnable r2 = new MyThreadPool.LoadIOTask(this,s);
-        final int[] cddd = new int[1];
-        cddd[0]=0;
-        MyThreadPool.Task t=new MyThreadPool.conncetis(this,cddd,latch,s);
-        pool1.execute(r1);
-        pool1.execute(r2);
-        pool1.execute(t);
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        int num= s.mystate;
-
-  return num;
-    }
     public int returnConnetstatus( ) {
         if(this.isConnect){
             return 1;

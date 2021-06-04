@@ -107,29 +107,29 @@ c.sendData(1);
         public void run()
         {
             this.c.closeClient();
+            this.s2.mystate=0;
 
         }
     }
 
 
     public static class sendData extends Task {
-int v;
-        public sendData(clientToServer c1,int value,ConnectStatus s1) {
+        double x;
+        double y;
+        public sendData(clientToServer c1,double x1,double y1,ConnectStatus s1) {
 
             super(c1,s1);
-            this.v=value;
+            this.x=x1;
+            this.y=y1;
         }
 
 
         public void run()
         {
-            this.c.sendData(v);
+            this.c.sendData(this.x ,this.y);
 
         }
-        public void setValue(int v1)
-        {
-            this.v=v1;
-        }
+
     }
     public static class conncetis extends Task {
         final int[] value;
