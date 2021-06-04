@@ -35,11 +35,10 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
         LoginViewModel lvm=new LoginViewModel(joystick);
-        activityMainBinding.setViewModel(lvm);
-        activityMainBinding.executePendingBindings();
 
 
-        setContentView(R.layout.activity_main);
+
+     ////   setContentView(R.layout.activity_main);
         // initiate  views
         customSeekBar =(SeekBar)findViewById(R.id.customSeekBar);
         // perform seek bar change listener event used for getting the progress value
@@ -85,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        activityMainBinding.setViewModel(lvm);
+        activityMainBinding.executePendingBindings();
     }
 
 

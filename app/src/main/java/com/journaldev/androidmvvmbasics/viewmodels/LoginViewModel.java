@@ -109,12 +109,17 @@ TheJoystick joy;
         }
 
         int num= s1.mystate;
+if(num==1){
 
+}
         return num;
     }
 
 
     public void onLoginClicked() {
+        if(this.s1.mystate==1){
+            return;
+        }
     int status=isClientConnet();
         if (status==1){      ///  if (user.isInputDataValid())
             setToastMessage(successMessage);

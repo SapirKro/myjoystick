@@ -89,6 +89,7 @@ c.sendData(1);
 
         }
     }
+
     public static class LoadIOTask extends Task {
 
         public LoadIOTask(clientToServer c1,ConnectStatus s1) {
@@ -163,6 +164,7 @@ c.sendData(1);
 
 
             this.value[0]=s2.mystate;
+            c.sendStatus(this.value[0]);
             latch.countDown();
 
         }

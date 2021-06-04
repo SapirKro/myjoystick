@@ -124,6 +124,21 @@ return 0;
 
 
     }
+    public void sendStatus(int state) {
+
+
+        System.out.println("sending data to the server");
+      if(state==1){
+          out.print("client connect " + "\r\n");
+          out.flush();
+      }
+        if(state==0){
+        out.print("client try to connect and filed "+ "\r\n");
+        out.flush();}
+
+
+
+    }
     public void sendTrottle(double t) {
         if ((t > 1) || (t < (0))) {
             System.out.println("v value wrong");
