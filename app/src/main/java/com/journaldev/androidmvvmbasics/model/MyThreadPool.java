@@ -131,6 +131,22 @@ c.sendData(1);
         }
 
     }
+    public static class sendTrotthle extends Task {
+        double t;
+
+        public sendTrotthle(clientToServer c1,double t1,ConnectStatus s1) {
+            super(c1,s1);
+            this.t=t1;
+        }
+
+
+        public void run()
+        {
+            this.c.sendTrottle(this.t);
+
+        }
+
+    }
     public static class conncetis extends Task {
         final int[] value;
         final CountDownLatch latch;

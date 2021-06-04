@@ -2,11 +2,14 @@ package com.journaldev.androidmvvmbasics.views;
 
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
@@ -19,18 +22,71 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    SeekBar customSeekBar;
+    SeekBar rudderSeekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.print("first statement. ");
-        Log.d("p","create");
-        Log.d("p","first statement");
+        Log.d("p", "create");
+        Log.d("p", "first statement");
         ///sapir
+        ///Seekbar1 s=new Seekbar1(MainActivity.this);
         super.onCreate(savedInstanceState);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
-        activityMainBinding.setViewModel(new LoginViewModel(joystick));
+        LoginViewModel lvm=new LoginViewModel(joystick);
+        activityMainBinding.setViewModel(lvm);
         activityMainBinding.executePendingBindings();
+
+
+        setContentView(R.layout.activity_main);
+        // initiate  views
+        customSeekBar =(SeekBar)findViewById(R.id.customSeekBar);
+        // perform seek bar change listener event used for getting the progress value
+        customSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                Log.d("Seekbar1","thr progressChangedValue "+progressChangedValue);
+               lvm.sendThrottleToServer(progressChangedValue);
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(MainActivity.this, "Seek bar progress is :" + progressChangedValue,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+      /// setContentView(R.layout.activity_main);
+        // initiate  views
+        rudderSeekBar =(SeekBar)findViewById(R.id.RudderseekBar);
+        // perform seek bar change listener event used for getting the progress value
+        rudderSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                Log.d("RudderseekBar","RudderseekBar progressChangedValue "+progress);
+                lvm.sendRudderToServer(progressChangedValue);
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(MainActivity.this, "rudderSeekBar progress is :" + progressChangedValue,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 
 
 /*
@@ -66,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }*/
 
-    }
+
 
     @BindingAdapter({"toastMessage"})
     public static void runMe(View view, String message) {

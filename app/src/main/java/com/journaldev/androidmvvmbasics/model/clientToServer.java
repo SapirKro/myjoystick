@@ -124,6 +124,77 @@ return 0;
 
 
     }
+    public void sendTrottle(double t) {
+        if ((t > 1) || (t < (0))) {
+            System.out.println("v value wrong");
+            return;
+        }
+
+
+        System.out.println("sending data to the server");
+        int i = 0;
+        int j=0;
+        //// while (j<7) {
+        if (i == 0) {
+            System.out.println("throttle" + t);
+
+        }
+        /// out.println(line);
+        /// System.out.println(line);
+        /// System.out.println("sending data to the server");
+        /// System.out.flush();
+ System.out.println("set /controls/engines/current-engine/throttle " + t);
+        System.out.flush();
+        out.print("set /controls/engines/current-engine/throttle " + t + "\r\n");
+        out.flush();
+
+        //// Thread.sleep(100);
+                /*i++;
+                if (i == 20) {
+                    v = v * (-1);
+                    i = 0;
+                    j++;
+
+                }*/
+
+
+    }
+
+    public void sendRudder(double r) {
+        if ((r > 1) || (r < (-1))) {
+            System.out.println("v value wrong");
+            return;
+        }
+
+
+        System.out.println("sending data to the server");
+        int i = 0;
+        int j=0;
+        //// while (j<7) {
+        if (i == 0) {
+            System.out.println("rudder" + r);
+
+        }
+        /// out.println(line);
+        /// System.out.println(line);
+        /// System.out.println("sending data to the server");
+        /// System.out.flush();
+        System.out.println("set /controls/flight/rudder " + r);
+        System.out.flush();
+        out.print("set /controls/flight/rudder " + r + "\r\n");
+        out.flush();
+
+        //// Thread.sleep(100);
+                /*i++;
+                if (i == 20) {
+                    v = v * (-1);
+                    i = 0;
+                    j++;
+
+                }*/
+
+
+    }
 
     public void closeClient() {
         out.close();

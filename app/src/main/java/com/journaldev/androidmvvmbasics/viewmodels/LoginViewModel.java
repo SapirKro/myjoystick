@@ -1,5 +1,7 @@
 package com.journaldev.androidmvvmbasics.viewmodels;
 
+import android.util.Log;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -46,10 +48,34 @@ TheJoystick joy;
        this.c= new clientToServer();
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus();
+      this.s1.mystate=0;
        joy=new TheJoystick(joystick,this.c);
         joy.doInChange(this.pool,this.s1);
     }
 
+    public void sendThrottleToServer(  int progressChangedValue) {
+
+        double th=progressChangedValue;
+        double th1=0.01;
+        double th2=th*0.01;
+        Log.d("lvm"," sendThrottleToServer "+th2);
+        if(this.s1.mystate==1){
+            Runnable t=new MyThreadPool.sendTrotthle(this.c,th2,s1);
+        pool.execute(t);}
+
+
+    }
+
+    public void sendRudderToServer(  int progressChangedValue) {
+        double ru=progressChangedValue;
+               double ru2=ru*0.01;
+        Log.d("lvm"," RudderToToServer "+ru2);
+        if(this.s1.mystate==1){
+            Runnable t=new MyThreadPool.sendTrotthle(this.c,ru2,s1);
+            pool.execute(t);}
+
+
+    }
     public void afterEmailTextChanged(CharSequence s) {
 
         user.setEmail(s.toString());

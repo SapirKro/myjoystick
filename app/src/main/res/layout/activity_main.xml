@@ -57,9 +57,11 @@
                 android:text="Throttle" />
 
             <SeekBar
-                android:id="@+id/seekBar2"
+                android:id="@+id/customSeekBar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+
+               />
 
 
             <io.github.controlwear.virtual.joystick.android.JoystickView
@@ -85,7 +87,7 @@
                 android:text="Rudder" />
 
             <SeekBar
-                android:id="@+id/seekBar"
+                android:id="@+id/RudderseekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
