@@ -46,9 +46,10 @@
 
         <View
             android:id="@+id/divider"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="17dp"
-            android:background="?android:attr/listDivider" />
+            android:divider="@color/redBackground"
+            android:dividerHeight="10dip" />
 
         <TextView
             android:id="@+id/textView"
