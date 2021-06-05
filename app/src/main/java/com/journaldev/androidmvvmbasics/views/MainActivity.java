@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(MainActivity.this, "Seek bar progress is :" + progressChangedValue,
-                        Toast.LENGTH_SHORT).show();
+               /* Toast.makeText(MainActivity.this, "Seek bar progress is :" + progressChangedValue,
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(MainActivity.this, "rudderSeekBar progress is :" + progressChangedValue,
-                        Toast.LENGTH_SHORT).show();
+             /*   Toast.makeText(MainActivity.this, "rudderSeekBar progress is :" + progressChangedValue,
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
 

@@ -52,7 +52,7 @@ TheJoystick joy;
        joy=new TheJoystick(joystick,this.c);
         joy.doInChange(this.pool,this.s1);
     }
-
+////change th from 0 to 1
     public void sendThrottleToServer(  int progressChangedValue) {
 
         double th=progressChangedValue;
@@ -65,10 +65,12 @@ TheJoystick joy;
 
 
     }
-
+    ////change rudder from -1 to 1
     public void sendRudderToServer(  int progressChangedValue) {
         double ru=progressChangedValue;
+
                double ru2=ru*0.01;
+               ///double value =ru2 -1;
         Log.d("lvm"," RudderToToServer "+ru2);
         if(this.s1.mystate==1){
             Runnable t=new MyThreadPool.sendTrotthle(this.c,ru2,s1);

@@ -129,7 +129,7 @@ return 0;
 
         System.out.println("sending data to the server");
       if(state==1){
-          out.print("client connect " + "\r\n");
+          out.print("I connected to the server! :) " + "\r\n");
           out.flush();
       }
         if(state==0){
