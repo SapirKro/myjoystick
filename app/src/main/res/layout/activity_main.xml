@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
  <layout xmlns:custom="http://schemas.android.com/apk/res-auto"
      xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/tools">
-
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
         <variable
@@ -11,58 +11,70 @@
     </data>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/inEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
+            android:hint="192.168.1.46"
+            android:inputType="text"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/inPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:afterTextChanged="@{(editable)->viewModel.afterPortTextChanged(editable)}"
+            android:hint="5400"
+            android:inputType="number"
+            android:padding="8dp" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()-> viewModel.onLoginClicked()}"
+            android:text="LOGIN"
+            bind:toastMessage="@{viewModel.toastMessage}" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Throttle" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_margin="8dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/inEmail"
-                android:layout_width="match_parent"
+            <!-- This library requires pair of the VerticalSeekBar and VerticalSeekBarWrapper classes -->
+            <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
+                android:layout_width="53dp"
                 android:layout_height="match_parent"
-                android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
-                android:hint="192.168.1.46"
-                android:inputType="text"
-                android:padding="8dp" />
+                android:rotation="180">
 
-            <EditText
-                android:id="@+id/inPort"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:afterTextChanged="@{(editable)->viewModel.afterPortTextChanged(editable)}"
-                android:hint="5400"
-                android:inputType="number"
-                android:padding="8dp" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:onClick="@{()-> viewModel.onLoginClicked()}"
-                android:text="LOGIN"
-                bind:toastMessage="@{viewModel.toastMessage}" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:text="Throttle" />
-
-            <SeekBar
-                android:id="@+id/customSeekBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-               />
-
+                <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
+                    android:id="@+id/customSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:splitTrack="false"
+                    app:seekBarRotation="CW90" /> <!-- Rotation: CW90 or CW270 -->
+            </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
             <io.github.controlwear.virtual.joystick.android.JoystickView
                 android:id="@+id/joystickView"
@@ -76,27 +88,29 @@
                 custom:JV_buttonColor="#A3060D"
                 custom:JV_buttonSizeRatio="15%"
                 custom:JV_fixedCenter="false" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:text="Rudder" />
-
-            <SeekBar
-                android:id="@+id/RudderseekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:max="100"
-                android:min="-100"
-                />
-
-
         </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/RudderseekBar"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:min="-100" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginStart="200dp"
+            android:layout_marginLeft="200dp"
+            android:text="Rudder" />
+
+
+    </LinearLayout>
 
 
 
