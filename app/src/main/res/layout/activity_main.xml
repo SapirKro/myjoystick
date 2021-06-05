@@ -47,7 +47,7 @@
         <View
             android:id="@+id/divider"
             android:layout_width="fill_parent"
-            android:layout_height="17dp"
+            android:layout_height="35dp"
             android:divider="@color/redBackground"
             android:dividerHeight="10dip" />
 
@@ -67,12 +67,14 @@
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
                 android:layout_width="53dp"
                 android:layout_height="match_parent"
+                android:paddingTop="27dp"
+                android:paddingBottom="25dp"
                 android:rotation="180">
 
                 <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
                     android:id="@+id/customSeekBar"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="50dp"
                     android:splitTrack="false"
                     app:seekBarRotation="CW90" /> <!-- Rotation: CW90 or CW270 -->
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
@@ -83,6 +85,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 custom:JV_backgroundColor="#252525"
                 custom:JV_borderColor="#000000"
                 custom:JV_borderWidth="4dp"
