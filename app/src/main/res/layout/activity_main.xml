@@ -94,6 +94,12 @@
 
                 custom:JV_buttonSizeRatio="15%"
                 custom:JV_fixedCenter="false" />
+
+
+            <com.journaldev.androidmvvmbasics.views.MyNewJoystick
+                android:id="@+id/MyNewCOOLJoystick"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
         </LinearLayout>
 
         <SeekBar

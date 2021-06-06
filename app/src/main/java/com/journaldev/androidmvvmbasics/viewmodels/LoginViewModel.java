@@ -10,6 +10,7 @@ import com.journaldev.androidmvvmbasics.model.ConnectStatus;
 import com.journaldev.androidmvvmbasics.model.MyThreadPool;
 import com.journaldev.androidmvvmbasics.model.User;
 import com.journaldev.androidmvvmbasics.model.clientToServer;
+import com.journaldev.androidmvvmbasics.views.MyNewJoystick;
 import com.journaldev.androidmvvmbasics.views.TheJoystick;
 
 import java.util.concurrent.CountDownLatch;
@@ -24,6 +25,7 @@ public class LoginViewModel extends BaseObservable {
     ExecutorService pool;
 TheJoystick joy;
     ConnectStatus s1;
+    MyNewJoystick joy1;
     private String successMessage = "Login was successful";
     private String errorMessage = "IP or Port not valid";
 
@@ -42,15 +44,17 @@ TheJoystick joy;
         notifyPropertyChanged(BR.toastMessage);
     }
 
-    public LoginViewModel(JoystickView joystick) {
+    public LoginViewModel(JoystickView joystick,MyNewJoystick joyy2) {
 
         user = new User("", "");
        this.c= new clientToServer();
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus();
       this.s1.mystate=0;
-       joy=new TheJoystick(joystick,this.c);
+
+       joy=new TheJoystick(joystick,this.c,joyy2);
         joy.doInChange(this.pool,this.s1);
+
     }
 ////change th from 0 to 1
     public void sendThrottleToServer(  int progressChangedValue) {

@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
-        LoginViewModel lvm=new LoginViewModel(joystick);
+       MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
+        LoginViewModel lvm=new LoginViewModel(joystick,joystick1);
 
 
 
