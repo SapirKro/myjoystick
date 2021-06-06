@@ -81,7 +81,7 @@
 
             <io.github.controlwear.virtual.joystick.android.JoystickView
                 android:id="@+id/joystickView"
-                android:layout_width="match_parent"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
@@ -91,6 +91,7 @@
                 custom:JV_borderColor="#000000"
                 custom:JV_borderWidth="4dp"
                 custom:JV_buttonColor="#A3060D"
+
                 custom:JV_buttonSizeRatio="15%"
                 custom:JV_fixedCenter="false" />
         </LinearLayout>
