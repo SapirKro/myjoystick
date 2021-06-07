@@ -78,54 +78,53 @@
                     android:splitTrack="false"
                     app:seekBarRotation="CW90" /> <!-- Rotation: CW90 or CW270 -->
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
+            <!--
+                        <io.github.controlwear.virtual.joystick.android.JoystickView
+                            android:id="@+id/joystickView"
+                            android:layout_width="170dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            custom:JV_backgroundColor="#252525"
+                            custom:JV_borderColor="#000000"
+                            custom:JV_borderWidth="4dp"
+                            custom:JV_buttonColor="#A3060D"
+                            custom:JV_buttonSizeRatio="15%"
+                            custom:JV_fixedCenter="false" />
 
-            <io.github.controlwear.virtual.joystick.android.JoystickView
-                android:id="@+id/joystickView"
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                custom:JV_backgroundColor="#252525"
-                custom:JV_borderColor="#000000"
-                custom:JV_borderWidth="4dp"
-                custom:JV_buttonColor="#A3060D"
-
-                custom:JV_buttonSizeRatio="15%"
-                custom:JV_fixedCenter="false" />
-
-
+             -->
             <com.journaldev.androidmvvmbasics.views.MyNewJoystick
                 android:id="@+id/MyNewCOOLJoystick"
-                android:layout_width="match_parent"
-                android:layout_height="210dp" />
+                android:layout_width="311dp"
+                android:layout_height="302dp" />
         </LinearLayout>
 
-        <SeekBar
-            android:id="@+id/RudderseekBar"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="1"
-            android:max="100"
-            android:min="-100" />
+                    <SeekBar
+                        android:id="@+id/RudderseekBar"
+                        android:layout_width="360dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:min="-100" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
 
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="200dp"
-            android:text="Rudder" />
-
-
-    </LinearLayout>
+                        android:layout_marginStart="200dp"
+                        android:layout_marginLeft="200dp"
+                        android:text="Rudder" />
 
 
+                </LinearLayout>
 
 
 
-</layout>
+
+
+            </layout>

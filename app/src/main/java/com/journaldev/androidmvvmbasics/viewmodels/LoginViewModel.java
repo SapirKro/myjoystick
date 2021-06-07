@@ -44,7 +44,7 @@ TheJoystick joy;
         notifyPropertyChanged(BR.toastMessage);
     }
 
-    public LoginViewModel(JoystickView joystick,MyNewJoystick joyy2) {
+    public LoginViewModel(MyNewJoystick joyy2) {
 
         user = new User("", "");
        this.c= new clientToServer();
@@ -52,7 +52,7 @@ TheJoystick joy;
       this.s1=new ConnectStatus();
       this.s1.mystate=0;
 
-       joy=new TheJoystick(joystick,this.c,joyy2);
+       joy=new TheJoystick(this.c,joyy2);
         joy.doInChange(this.pool,this.s1);
 
     }

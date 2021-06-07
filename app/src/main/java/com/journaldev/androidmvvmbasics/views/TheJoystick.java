@@ -21,14 +21,14 @@ import static java.lang.Math.cos;
 
 public class TheJoystick  {
     clientToServer c;
-    JoystickView joystick;
+    ////JoystickView joystick;
     MyNewJoystick j1;
     double Ymove;
     double Xmove;
 
-    public TheJoystick(JoystickView joystick1,clientToServer c1, MyNewJoystick j2) {
+    public TheJoystick(clientToServer c1, MyNewJoystick j2) {
 
-        this.joystick=joystick1;
+     //////   this.joystic//k=joystick1;
         this.c=c1;
         this.Xmove=0;
         this.Ymove=0;
@@ -62,7 +62,7 @@ public class TheJoystick  {
         this.j1.setOnMoveListener(l1,100);
 
 
-        JoystickView.OnMoveListener ll=(angle, strength) -> {
+     /*   JoystickView.OnMoveListener ll=(angle, strength) -> {
 
             ///angle=45;
             ///  strength=100;
@@ -80,8 +80,8 @@ public class TheJoystick  {
 
            pool.execute(r1);}
 
-        };
+        };*/
 
-        this.joystick.setOnMoveListener(ll,100);
+       //// this.joystick.setOnMoveListener(ll,100);
     }
 }

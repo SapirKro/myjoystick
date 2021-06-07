@@ -30,20 +30,20 @@ public class MyNewJoystick extends View  {
      *                access the current theme, resources, etc.
      */
 
-    static float x=300;
-    static float y=300;
+    static float x=400;
+    static float y=400;
     static int r=0,g=0,b=0;
     final static int radius=30;
     private long mLoopInterval =100;
     Paint paint = null;
-    private float littleCircleRadisSize=50;
+    private float littleCircleRadisSize=70;
     private int mPosX = 0;
     private int mPosY = 0;
     private float currentLittleCircleX = 0;
     private float currentLittleCircleY = 0;
-    private int anotherStratXLittleCIrcle = 300;
-    private int anotherStratYLittleCIrcle = 300;
-    private int radiousOfBigCircle=200;
+    private int anotherStratXLittleCIrcle = 400;
+    private int anotherStratYLittleCIrcle = 400;
+    private int radiousOfBigCircle=300;
 
     private OnMoveListener mCallback;
     /**

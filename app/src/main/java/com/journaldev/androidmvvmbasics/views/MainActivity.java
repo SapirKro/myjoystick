@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         ///Seekbar1 s=new Seekbar1(MainActivity.this);
         super.onCreate(savedInstanceState);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+   ////     JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
-        LoginViewModel lvm=new LoginViewModel(joystick,joystick1);
+        LoginViewModel lvm=new LoginViewModel(joystick1);
 
 
 
