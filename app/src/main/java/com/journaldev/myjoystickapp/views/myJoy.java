@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics.views;
+package com.journaldev.myjoystickapp.views;
 
 import android.content.Context;
 import android.view.View;

@@ -1,17 +1,17 @@
-package com.journaldev.androidmvvmbasics.viewmodels;
+package com.journaldev.myjoystickapp.viewmodels;
 
 import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.journaldev.androidmvvmbasics.BR;
-import com.journaldev.androidmvvmbasics.model.ConnectStatus;
-import com.journaldev.androidmvvmbasics.model.MyThreadPool;
-import com.journaldev.androidmvvmbasics.model.User;
-import com.journaldev.androidmvvmbasics.model.clientToServer;
-import com.journaldev.androidmvvmbasics.views.MyNewJoystick;
-import com.journaldev.androidmvvmbasics.views.TheJoystick;
+import com.journaldev.myjoystickapp.model.ConnectStatus;
+import com.journaldev.myjoystickapp.model.MyThreadPool;
+import com.journaldev.myjoystickapp.model.User;
+import com.journaldev.myjoystickapp.BR;
+import com.journaldev.myjoystickapp.model.clientToServer;
+import com.journaldev.myjoystickapp.views.MyNewJoystick;
+import com.journaldev.myjoystickapp.views.TheJoystick;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

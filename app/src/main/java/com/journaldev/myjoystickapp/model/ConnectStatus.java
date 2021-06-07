@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics.model;
+package com.journaldev.myjoystickapp.model;
 
 public class ConnectStatus {
     public int mystate;

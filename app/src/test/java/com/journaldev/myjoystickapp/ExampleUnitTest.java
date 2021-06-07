@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics;
+package com.journaldev.myjoystickapp;
 
 import org.junit.Test;
 

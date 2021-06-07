@@ -1,11 +1,11 @@
-package com.journaldev.androidmvvmbasics.views;
+package com.journaldev.myjoystickapp.views;
 
 
 import android.util.Log;
 
-import com.journaldev.androidmvvmbasics.model.ConnectStatus;
-import com.journaldev.androidmvvmbasics.model.MyThreadPool;
-import com.journaldev.androidmvvmbasics.model.clientToServer;
+import com.journaldev.myjoystickapp.model.ConnectStatus;
+import com.journaldev.myjoystickapp.model.MyThreadPool;
+import com.journaldev.myjoystickapp.model.clientToServer;
 
 import java.util.concurrent.ExecutorService;
 

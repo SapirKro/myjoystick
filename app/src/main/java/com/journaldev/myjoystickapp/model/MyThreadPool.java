@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics.model;
+package com.journaldev.myjoystickapp.model;
 
 import java.util.concurrent.CountDownLatch;
 

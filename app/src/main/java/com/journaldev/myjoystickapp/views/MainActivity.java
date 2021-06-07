@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics.views;
+package com.journaldev.myjoystickapp.views;
 
 
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
-import com.journaldev.androidmvvmbasics.R;
-import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
-import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
+import com.journaldev.myjoystickapp.R;
+import com.journaldev.myjoystickapp.databinding.ActivityMainBinding;
+import com.journaldev.myjoystickapp.viewmodels.LoginViewModel;
 
 
 

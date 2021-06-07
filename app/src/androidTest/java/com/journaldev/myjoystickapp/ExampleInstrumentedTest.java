@@ -1,4 +1,4 @@
-package com.journaldev.androidmvvmbasics;
+package com.journaldev.myjoystickapp;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.journaldev.androidmvvmbasics", appContext.getPackageName());
+        assertEquals("com.journaldev.myjoystickapp", appContext.getPackageName());
     }
 }

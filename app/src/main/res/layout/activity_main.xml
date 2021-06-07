@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel" />
+            type="com.journaldev.myjoystickapp.viewmodels.LoginViewModel" />
     </data>
 
 
@@ -95,7 +95,7 @@
                             custom:JV_fixedCenter="false" />
 
              -->
-            <com.journaldev.androidmvvmbasics.views.MyNewJoystick
+            <com.journaldev.myjoystickapp.views.MyNewJoystick
                 android:id="@+id/MyNewCOOLJoystick"
                 android:layout_width="311dp"
                 android:layout_height="302dp" />
