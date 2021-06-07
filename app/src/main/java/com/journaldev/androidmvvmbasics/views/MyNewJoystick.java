@@ -215,9 +215,11 @@ public class MyNewJoystick extends View  {
                 break;
             case (MotionEvent.ACTION_MOVE) :
                 ///while mouse move,changed accorinly
-                Log.d("DEBUG_TAG","Action was MOVE");
+               /// Log.d("DEBUG_TAG","Action was MOVE");
                 currentLittleCircleX=event.getX();
                 currentLittleCircleY=event.getY();
+                if (mCallback != null)
+                    mCallback.onMove(getAngle(), getStrength());
                 break;
             case (MotionEvent.ACTION_UP) :
                 ///while relsed-changed location to the last cordinted that has been pressed
@@ -237,6 +239,7 @@ public class MyNewJoystick extends View  {
             default :
                 return super.onTouchEvent(event);
         }
+
         ///cumptue the current radius
         ///check if we cross the borader
         double c = Math.sqrt((currentLittleCircleX - anotherStratXLittleCIrcle) * (currentLittleCircleX - anotherStratXLittleCIrcle)
