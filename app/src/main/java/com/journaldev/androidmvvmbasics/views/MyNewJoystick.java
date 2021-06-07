@@ -22,37 +22,26 @@ public class MyNewJoystick extends View  {
         void onMove(int angle, int strength);
     }
 
-    private static final String DEBUG_TAG ="DEBUG_TAG" ;
-    /**
-     * Simple constructor to use when creating a view from code.
-     *
-     * @param context The Context the view is running in, through which it can
-     *                access the current theme, resources, etc.
-     */
+
+
 
     static float x=400;
     static float y=400;
     static int r=0,g=0,b=0;
-    final static int radius=30;
+
     private long mLoopInterval =100;
     Paint paint = null;
     private float littleCircleRadisSize=70;
-    private int mPosX = 0;
-    private int mPosY = 0;
+
     private float currentLittleCircleX = 0;
     private float currentLittleCircleY = 0;
     private int anotherStratXLittleCIrcle = 400;
     private int anotherStratYLittleCIrcle = 400;
-    private int radiousOfBigCircle=300;
+    private final int radiousOfBigCircle=300;
 
     private OnMoveListener mCallback;
-    /**
-     * The allowed direction of the button is define by the value of this parameter:
-     * - a negative value for horizontal axe
-     * - a positive value for vertical axe
-     * - zero for both axes
-     */
-    private int mButtonDirection = 0;
+
+
     public MyNewJoystick(Context context) {
         super(context);
         paint=new Paint();
@@ -64,14 +53,6 @@ public class MyNewJoystick extends View  {
 
 
     }
-    /**
-     * Register a callback to be invoked when this JoystickView's button is moved
-     * @param l The callback that will run
-     */
-    public void setOnMoveListener(OnMoveListener l) {
-        setOnMoveListener(l, 100);
-    }
-
 
     /**
      * Register a callback to be invoked when this JoystickView's button is moved
@@ -99,7 +80,7 @@ public class MyNewJoystick extends View  {
     private void init(Context context) {
         paint = new Paint();
     }
-    protected void BigCircle(Canvas canvas) {
+ /*   protected void BigCircle(Canvas canvas) {
         int x = getWidth();
         int y = getHeight();
         int radius;
@@ -110,7 +91,7 @@ public class MyNewJoystick extends View  {
         // Use Color.parseColor to define HTML colors
         paint.setColor(Color.parseColor("#000000"));
         canvas.drawCircle(x / 2, y / 2, radius, paint);
-    }
+    }*/
 
     private void initPosition() {
         // get the center of view to position circle
@@ -118,7 +99,7 @@ public class MyNewJoystick extends View  {
        anotherStratYLittleCIrcle = (int) (currentLittleCircleY = getWidth() / 2);
     }
 
-    protected void littleCircle(Canvas canvas,int x,int y) {
+   /* protected void littleCircle(Canvas canvas,int x,int y) {
 
         int radius;
         radius = 200;
@@ -129,7 +110,7 @@ public class MyNewJoystick extends View  {
         paint.setColor(Color.parseColor("#CD5C5C"));
         canvas.drawCircle(x / 2, y / 2, radius, paint);
 
-    }
+    }*/
     @Override
     protected void onDraw(Canvas canvas)
     {
@@ -137,7 +118,7 @@ public class MyNewJoystick extends View  {
        //// initPosition();
         //drawing the border
         paint.setColor(Color.parseColor("#000000"));
-        canvas.drawCircle(anotherStratXLittleCIrcle ,anotherStratYLittleCIrcle ,(radiousOfBigCircle+4),paint);
+        canvas.drawCircle(anotherStratXLittleCIrcle ,anotherStratYLittleCIrcle ,(radiousOfBigCircle+8),paint);
 ///big circle
         paint.setColor(Color.parseColor("#252525"));
         canvas.drawCircle(anotherStratXLittleCIrcle,anotherStratYLittleCIrcle ,radiousOfBigCircle,paint);
@@ -270,29 +251,7 @@ public class MyNewJoystick extends View  {
 
     }
 
-    public void setButtonSizeRatio(float newRatio) {
-        if (newRatio > 0.0f & newRatio <= 1.0f) {
-            littleCircleRadisSize = newRatio;
-        }
-    }
 
-    public void randColor()
-    {
-        //r=(int)(Math.random()*255);
-        //g=(int)(Math.random()*255);
-        //b=(int)(Math.random()*255);
-        r=1;
-        g=2;
-        b=3;
-        //Toast.makeText(c, "r,g,b="+r+","+g+","+b,Toast.LENGTH_SHORT).show();
-    }
 
-    public void dissColor(){
-
-        r=0;
-        g=0;
-        b=0;
-
-    }
 }
 

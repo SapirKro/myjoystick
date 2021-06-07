@@ -1,15 +1,12 @@
 package com.journaldev.androidmvvmbasics.views;
 
 
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
@@ -18,7 +15,6 @@ import com.journaldev.androidmvvmbasics.R;
 import com.journaldev.androidmvvmbasics.databinding.ActivityMainBinding;
 import com.journaldev.androidmvvmbasics.viewmodels.LoginViewModel;
 
-import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -2,21 +2,12 @@
 
 import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+
+
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 ///fgfs --altitude=5000 --heading=0 --vc=110
 // Your First Program
@@ -25,7 +16,7 @@ public class clientToServer {
     String IP;
     int port;
     Socket fg;
-    BufferedReader in;
+
     PrintWriter out;
     boolean isConnect;
 
@@ -33,13 +24,13 @@ public class clientToServer {
         this.IP="192.168.1.46";
         this.port=5400;
         isConnect=false;
-        Log.d("clientToServer","sserver...");
+        Log.d("clientToServer","server...");
     }
 
     public int connectToServer() {
 
-        boolean isConnect = false;
-        while (!isConnect) {
+
+        while (true) {
             try {
                 Log.d("clientToServer","waiting for the server...");
                 System.out.println("waiting for the server...");
@@ -66,7 +57,7 @@ public class clientToServer {
             }
 
         }
-return 0;
+
     }
 
     public void LoadIO() {
@@ -93,16 +84,15 @@ return 0;
             System.out.println("v value wrong");
             return;
         }
-        String line="stuff";
+      /////  String line="stuff";
 
             System.out.println("sending data to the server");
-            int i = 0;
-            int j=0;
+
            //// while (j<7) {
-                if (i == 0) {
+
                     System.out.println("set /controls/flight/aileron " + x);
                     System.out.println("set /controls/flight/elevator " + y);
-                }
+
                 /// out.println(line);
                 /// System.out.println(line);
                 /// System.out.println("sending data to the server");
@@ -147,13 +137,13 @@ return 0;
 
 
         System.out.println("sending data to the server");
-        int i = 0;
-        int j=0;
+
+
         //// while (j<7) {
-        if (i == 0) {
+
             System.out.println("throttle" + t);
 
-        }
+
         /// out.println(line);
         /// System.out.println(line);
         /// System.out.println("sending data to the server");
@@ -183,13 +173,13 @@ return 0;
 
 
         System.out.println("sending data to the server");
-        int i = 0;
-        int j=0;
+
+
         //// while (j<7) {
-        if (i == 0) {
+
             System.out.println("rudder" + r);
 
-        }
+
         /// out.println(line);
         /// System.out.println(line);
         /// System.out.println("sending data to the server");
@@ -227,12 +217,12 @@ return 0;
         }
     }
 
-    public int returnConnetstatus( ) {
+   /* public int returnConnetstatus( ) {
         if(this.isConnect){
             return 1;
         }
         return 0;
-    }
+    }*/
 
     public void setIP(String ip1) {
         this.IP=ip1;

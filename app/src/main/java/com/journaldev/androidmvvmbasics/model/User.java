@@ -1,8 +1,6 @@
 package com.journaldev.androidmvvmbasics.model;
 
 import androidx.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Patterns;
 
 public class User {
     @NonNull
@@ -33,7 +31,5 @@ public class User {
         mPort = Port;
     }
 
-    public boolean isInputDataValid() {
-        return !TextUtils.isEmpty(getEmail()) && Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches() && getPort().length() > 5;
-    }
+
 }

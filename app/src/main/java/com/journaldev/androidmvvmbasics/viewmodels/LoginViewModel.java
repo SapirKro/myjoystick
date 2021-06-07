@@ -17,17 +17,15 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.github.controlwear.virtual.joystick.android.JoystickView;
+
 
 public class LoginViewModel extends BaseObservable {
-    private User user;
-    private clientToServer c;
+    private final User user;
+    private final clientToServer c;
     ExecutorService pool;
 TheJoystick joy;
     ConnectStatus s1;
     MyNewJoystick joy1;
-    private String successMessage = "Login was successful";
-    private String errorMessage = "IP or Port not valid";
 
     @Bindable
     public String toastMessage = null;
@@ -51,7 +49,7 @@ TheJoystick joy;
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus();
       this.s1.mystate=0;
-
+this.joy1=joyy2;
        joy=new TheJoystick(this.c,joyy2);
         joy.doInChange(this.pool,this.s1);
 
@@ -60,7 +58,7 @@ TheJoystick joy;
     public void sendThrottleToServer(  int progressChangedValue) {
 
         double th=progressChangedValue;
-        double th1=0.01;
+
         double th2=th*0.01;
         Log.d("lvm"," sendThrottleToServer "+th2);
         if(this.s1.mystate==1){
@@ -77,7 +75,7 @@ TheJoystick joy;
                ///double value =ru2 -1;
         Log.d("lvm"," RudderToToServer "+ru2);
         if(this.s1.mystate==1){
-            Runnable t=new MyThreadPool.sendTrotthle(this.c,ru2,s1);
+            Runnable t=new MyThreadPool.sendRudder(this.c,ru2,s1);
             pool.execute(t);}
 
 
@@ -102,9 +100,8 @@ TheJoystick joy;
         s1.mystate=0;
         Runnable r1 = new MyThreadPool.connectTask(this.c,s1);
         Runnable r2 = new MyThreadPool.LoadIOTask(this.c,s1);
-        final int[] cddd = new int[1];
-        cddd[0]=0;
-        MyThreadPool.Task t=new MyThreadPool.conncetis(this.c,cddd,latch,s1);
+
+        MyThreadPool.Task t=new MyThreadPool.conncetis(this.c,latch,s1);
         pool.execute(r1);
         pool.execute(r2);
         pool.execute(t);
@@ -115,9 +112,7 @@ TheJoystick joy;
         }
 
         int num= s1.mystate;
-if(num==1){
 
-}
         return num;
     }
 
@@ -128,11 +123,14 @@ if(num==1){
         }
     int status=isClientConnet();
         if (status==1){      ///  if (user.isInputDataValid())
+            String successMessage = "Login was successful";
             setToastMessage(successMessage);
 
            //// Runnable r1 = new MyThreadPool.sendData(c,1,s1);
             ///pool.execute(r1);
         }
-        else{            setToastMessage(errorMessage);}
+        else{
+            String errorMessage = "IP or Port not valid";
+            setToastMessage(errorMessage);}
     }
 }

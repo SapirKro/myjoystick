@@ -1,19 +1,14 @@
 package com.journaldev.androidmvvmbasics.views;
 
-import android.annotation.SuppressLint;
-import android.app.Fragment;
-import android.content.Context;
-import android.util.Log;
-import android.view.View;
 
-import com.journaldev.androidmvvmbasics.R;
+import android.util.Log;
+
 import com.journaldev.androidmvvmbasics.model.ConnectStatus;
 import com.journaldev.androidmvvmbasics.model.MyThreadPool;
 import com.journaldev.androidmvvmbasics.model.clientToServer;
 
 import java.util.concurrent.ExecutorService;
 
-import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 import static java.lang.Math.sin;
 import static java.lang.Math.cos;

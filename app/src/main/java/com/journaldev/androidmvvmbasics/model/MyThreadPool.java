@@ -1,15 +1,7 @@
 package com.journaldev.androidmvvmbasics.model;
-import java.io.IOException;
-import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import java.net.Socket;
-
-import com.journaldev.androidmvvmbasics.model.clientToServer;
 public class MyThreadPool {
 // Java program to illustrate
 // ThreadPool
@@ -17,8 +9,8 @@ public class MyThreadPool {
     // Task class to be executed (Step 1)
     public static class Task implements Runnable {
        public clientToServer c;
-      int state;
-        private String name;
+
+
         ConnectStatus s2;
 
         public Task(clientToServer c1,ConnectStatus s1)
@@ -100,9 +92,9 @@ c.sendData(1);
             this.c.LoadIO();
         }
     }
-    public static class CloseTask extends Task {
+    public static class DisconnectClientTask extends Task {
 
-        public CloseTask(clientToServer c1,ConnectStatus s1) {
+        public DisconnectClientTask(clientToServer c1,ConnectStatus s1) {
             super(c1,s1);
         }
         public void run()
@@ -127,6 +119,7 @@ c.sendData(1);
 
         public void run()
         {
+            ///send alireon and elevtor
             this.c.sendData(this.x ,this.y);
 
         }
@@ -148,13 +141,31 @@ c.sendData(1);
         }
 
     }
+
+    public static class sendRudder extends Task {
+        double r;
+
+        public sendRudder(clientToServer c1,double r1,ConnectStatus s1) {
+            super(c1,s1);
+            this.r=r1;
+        }
+
+
+        public void run()
+        {
+            this.c.sendRudder(this.r);
+
+        }
+
+    }
+
     public static class conncetis extends Task {
-        final int[] value;
+
         final CountDownLatch latch;
-        public conncetis(clientToServer c1,final int[] value1 ,final CountDownLatch latch1,ConnectStatus s1 ) {
+        public conncetis(clientToServer c1,final CountDownLatch latch1,ConnectStatus s1 ) {
 
             super(c1,s1);
-           this.value=value1;
+
            this.latch=latch1;
 
         }
@@ -163,15 +174,15 @@ c.sendData(1);
         {
 
 
-            this.value[0]=s2.mystate;
-            c.sendStatus(this.value[0]);
+           //// this.value[0]=s2.mystate;
+            c.sendStatus(s2.mystate);
             latch.countDown();
 
         }
 
     }
 
-    public static class Test
+   /* public static class Test
     {
         // Maximum number of threads in thread pool
         static final int MAX_T = 1;
@@ -201,8 +212,8 @@ c.sendData(1);
 
 
             // pool shutdown ( Step 4)
-            pool.shutdown();*/
-        }
-    }
+            pool.shutdown();
+        }*/
+    ///}
 
 }
