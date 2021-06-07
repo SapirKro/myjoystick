@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
      ////   setContentView(R.layout.activity_main);
         // initiate  views
-        customSeekBar =(SeekBar)findViewById(R.id.customSeekBar);
+        customSeekBar =findViewById(R.id.customSeekBar);
         // perform seek bar change listener event used for getting the progress value
         customSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
       /// setContentView(R.layout.activity_main);
         // initiate  views
-        rudderSeekBar =(SeekBar)findViewById(R.id.RudderseekBar);
+        rudderSeekBar =findViewById(R.id.RudderseekBar);
         // perform seek bar change listener event used for getting the progress value
         rudderSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;
