@@ -1,13 +1,17 @@
  package com.journaldev.myjoystickapp.model;
-
+///TODO FIX BUTTON THAT STUCK.
+ ///TODO IS IT SUPOOSE TO MOVE AKWARDLY.
+ ///TODO PUT JOYSTICK IN LVM,CHANGE THE JOURNLDEV NAME
 import android.util.Log;
 
 
 
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 ///fgfs --altitude=5000 --heading=0 --vc=110
 // Your First Program
@@ -32,9 +36,18 @@ public class clientToServer {
 int i=1;
         while (true) {
             try {
+                if(i>=3){
+                    return 0;
+                }
                 Log.d("clientToServer","waiting for the server...try number "+i);
                 System.out.println("waiting for the server...try number "+i);
-                fg = new Socket( this.IP, this.port);
+           ////     fg = new Socket( this.IP, this.port);
+                int timeout = 2000;
+                int port = this.port;
+                String address = this.IP;
+                InetSocketAddress inetAddress = new InetSocketAddress(address, port);
+                fg = new Socket( );
+                fg.connect(inetAddress, timeout);
                 isConnect = fg.isConnected();
                 i++;
                 if (isConnect) {
@@ -48,7 +61,9 @@ int i=1;
                 try {
                     Log.d("clientToServer","time out.trying again  to connect in 1 second...");
                     System.out.println("time out.trying again  to connect in 1 second...");
+                    i++;
                     Thread.sleep(1000);
+
                 } catch (InterruptedException e1) {
                     Log.d("clientToServer","Error InterruptedException e1");
                     System.out.println("Error InterruptedException e1");
@@ -56,7 +71,6 @@ int i=1;
                 }
 
             }
-
         }
 
     }
@@ -86,7 +100,7 @@ int i=1;
             return;
         }
       /////  String line="stuff";
-y=0;
+
             System.out.println("sending data to the server");
 
            //// while (j<7) {
@@ -124,8 +138,8 @@ y=0;
           out.flush();
       }
         if(state==0){
-        out.print("client try to connect and filed "+ "\r\n");
-        out.flush();}
+       return;
+        }
 
 
 

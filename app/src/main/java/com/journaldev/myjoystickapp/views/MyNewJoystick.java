@@ -10,6 +10,13 @@ import android.view.View;
 
 import android.view.MotionEvent;
 
+////<<<---alirron--->>>>> X
+////     /\
+////     |
+////   ELEVTOR  Y
+////     |
+////     |
+///////  \/
 public class MyNewJoystick extends View  {
 
     public interface OnMoveListener {
