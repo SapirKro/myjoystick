@@ -41,8 +41,35 @@ public class TheJoystick  {
             double move=0.01;
             double s=strength;
             move = s*0.01;
+            Log.d("TheJoystick","angle"+angle);
+            Log.d("TheJoystick","strength"+strength);
             double myYmove=sin(angle)*move;
             double myXmove=cos(angle)*move;
+            if((angle<180)&&(angle>0) ){
+                if (myYmove<0){
+                    myYmove=(-1)*myYmove;
+                }
+            }
+            if((angle<360)&&(angle>180) ){
+                if (myYmove>0){
+                    myYmove=(-1)*myYmove;
+                }
+            }
+            if((angle<90)&&(angle>0) ){
+                if (myXmove<0){
+                    myXmove=(-1)*myXmove;
+                }
+            }
+            if((angle<360)&&(angle>270) ){
+                if (myXmove<0){
+                    myXmove=(-1)*myXmove;
+                }
+            }
+            if((angle>90)&&(angle<270) ){
+                if (myXmove>0){
+                    myXmove=(-1)*myXmove;
+                }
+            }
             Log.d("TheJoystick","Ymove"+Ymove);
             Log.d("TheJoystick","Xmove"+Xmove);
             this.Xmove=myXmove;

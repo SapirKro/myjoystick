@@ -199,16 +199,16 @@ public class MyNewJoystick extends View  {
                /// Log.d("DEBUG_TAG","Action was MOVE");
                 currentLittleCircleX=event.getX();
                 currentLittleCircleY=event.getY();
-                if (mCallback != null)
-                    mCallback.onMove(getAngle(), getStrength());
+           /*    if (mCallback != null)
+                    mCallback.onMove(getAngle(), getStrength());*/
                 break;
             case (MotionEvent.ACTION_UP) :
                 ///while relsed-changed location to the last cordinted that has been pressed
                 Log.d("DEBUG_TAG","Action was UP");
                 currentLittleCircleX=anotherStratXLittleCIrcle;
                 currentLittleCircleY=anotherStratYLittleCIrcle;
-                if (mCallback != null)
-                    mCallback.onMove(getAngle(), getStrength());
+             /*   if (mCallback != null)
+                    mCallback.onMove(getAngle(), getStrength());*/
                 break;
             case (MotionEvent.ACTION_CANCEL) :
                 Log.d("DEBUG_TAG","Action was CANCEL");
@@ -231,6 +231,8 @@ public class MyNewJoystick extends View  {
         }
         x=currentLittleCircleX;
         y=currentLittleCircleY;
+        if (mCallback != null)
+            mCallback.onMove(getAngle(), getStrength());
         this.invalidate();
         return true;
     /*x=(int)event.getX()-(radius/2);      //logic to plot the circle in exact touch place

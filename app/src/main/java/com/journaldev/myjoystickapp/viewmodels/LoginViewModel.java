@@ -96,7 +96,6 @@ this.joy1=joyy2;
 
     public int isClientConnet( ) {
         final CountDownLatch latch = new CountDownLatch(1);
-
         s1.mystate=0;
         Runnable r1 = new MyThreadPool.connectTask(this.c,s1);
         Runnable r2 = new MyThreadPool.LoadIOTask(this.c,s1);
@@ -121,11 +120,15 @@ this.joy1=joyy2;
         if(this.s1.mystate==1){
             return;
         }
+        String Message = "waiting for the server...";
+        setToastMessage(Message);
+
     int status=isClientConnet();
+
+
         if (status==1){      ///  if (user.isInputDataValid())
             String successMessage = "Login was successful";
             setToastMessage(successMessage);
-
            //// Runnable r1 = new MyThreadPool.sendData(c,1,s1);
             ///pool.execute(r1);
         }

@@ -21,7 +21,7 @@ public class clientToServer {
     boolean isConnect;
 
     public clientToServer() {
-        this.IP="192.168.1.46";
+        this.IP="192.168.1.42";
         this.port=5400;
         isConnect=false;
         Log.d("clientToServer","server...");
@@ -29,13 +29,14 @@ public class clientToServer {
 
     public int connectToServer() {
 
-
+int i=1;
         while (true) {
             try {
-                Log.d("clientToServer","waiting for the server...");
-                System.out.println("waiting for the server...");
-                fg = new Socket("192.168.1.46", 5400);
+                Log.d("clientToServer","waiting for the server...try number "+i);
+                System.out.println("waiting for the server...try number "+i);
+                fg = new Socket( this.IP, this.port);
                 isConnect = fg.isConnected();
+                i++;
                 if (isConnect) {
                     Log.d("clientToServer","connected to server!");
                     System.out.println("connected to server!");
@@ -85,7 +86,7 @@ public class clientToServer {
             return;
         }
       /////  String line="stuff";
-
+y=0;
             System.out.println("sending data to the server");
 
            //// while (j<7) {
@@ -101,8 +102,8 @@ public class clientToServer {
                 // System.out.flush();
                 out.print("set /controls/flight/aileron " + x + "\r\n");
                 out.flush();
-                out.print("set /controls/flight/elevator " + y + "\r\n");
-                out.flush();
+               out.print("set /controls/flight/elevator " + y + "\r\n");
+               out.flush();
                //// Thread.sleep(100);
                 /*i++;
                 if (i == 20) {

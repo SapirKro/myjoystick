@@ -1,7 +1,7 @@
 package com.journaldev.myjoystickapp.model;
 
 import androidx.annotation.NonNull;
-
+///TODO CHANGE TO IP AND PORT AND EXPORT FROM XML
 public class User {
     @NonNull
     private String mEmail;
