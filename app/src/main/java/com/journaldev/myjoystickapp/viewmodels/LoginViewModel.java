@@ -1,15 +1,18 @@
 package com.journaldev.myjoystickapp.viewmodels;
 
+import android.app.ProgressDialog;
 import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.fragment.app.FragmentManager;
 
 import com.journaldev.myjoystickapp.model.ConnectStatus;
 import com.journaldev.myjoystickapp.model.MyThreadPool;
 import com.journaldev.myjoystickapp.model.User;
 import com.journaldev.myjoystickapp.BR;
 import com.journaldev.myjoystickapp.model.clientToServer;
+import com.journaldev.myjoystickapp.views.MainActivity;
 import com.journaldev.myjoystickapp.views.MyNewJoystick;
 import com.journaldev.myjoystickapp.views.TheJoystick;
 
@@ -26,6 +29,7 @@ public class LoginViewModel extends BaseObservable {
 TheJoystick joy;
     ConnectStatus s1;
     MyNewJoystick joy1;
+    ProgressDialog nDialog;
 
     @Bindable
     public String toastMessage = null;
@@ -42,7 +46,7 @@ TheJoystick joy;
         notifyPropertyChanged(BR.toastMessage);
     }
 
-    public LoginViewModel(MyNewJoystick joyy2) {
+    public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2) {
 
         user = new User("", "");
        this.c= new clientToServer();
@@ -52,7 +56,7 @@ TheJoystick joy;
 this.joy1=joyy2;
        joy=new TheJoystick(this.c,joyy2);
         joy.doInChange(this.pool,this.s1);
-
+this.nDialog=nDialog2;
     }
 ////change th from 0 to 1
     public void sendThrottleToServer(  int progressChangedValue) {
@@ -123,8 +127,11 @@ this.joy1=joyy2;
         String Message = "waiting for the server...";
         setToastMessage(Message);
 
+
+    ///    nDialog.show();
     int status=isClientConnet();
 
+ ///  nDialog.dismiss();
 
         if (status==1){      ///  if (user.isInputDataValid())
             String successMessage = "Login was successful";
