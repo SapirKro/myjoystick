@@ -1,4 +1,4 @@
- package com.journaldev.myjoystickapp.model;
+ package com.sapir.myjoystickapp.model;
 ///TODO FIX BUTTON THAT STUCK.
  ///TODO IS IT SUPOOSE TO MOVE AKWARDLY.
  ///TODO PUT JOYSTICK IN LVM,CHANGE THE JOURNLDEV NAME

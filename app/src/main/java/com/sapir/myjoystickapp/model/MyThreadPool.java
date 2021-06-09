@@ -1,4 +1,4 @@
-package com.journaldev.myjoystickapp.model;
+package com.sapir.myjoystickapp.model;
 
 import java.util.concurrent.CountDownLatch;
 

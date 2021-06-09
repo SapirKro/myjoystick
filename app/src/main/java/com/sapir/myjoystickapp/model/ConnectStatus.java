@@ -1,8 +1,8 @@
-package com.journaldev.myjoystickapp.model;
+package com.sapir.myjoystickapp.model;
 
 public class ConnectStatus {
     public int mystate;
     public ConnectStatus(){
-        mystate=0;
+        mystate=-1;
     }
 }

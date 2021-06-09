@@ -1,11 +1,11 @@
-package com.journaldev.myjoystickapp.views;
+package com.sapir.myjoystickapp.views;
 
 
 import android.util.Log;
 
-import com.journaldev.myjoystickapp.model.ConnectStatus;
-import com.journaldev.myjoystickapp.model.MyThreadPool;
-import com.journaldev.myjoystickapp.model.clientToServer;
+import com.sapir.myjoystickapp.model.ConnectStatus;
+import com.sapir.myjoystickapp.model.MyThreadPool;
+import com.sapir.myjoystickapp.model.clientToServer;
 
 import java.util.concurrent.ExecutorService;
 

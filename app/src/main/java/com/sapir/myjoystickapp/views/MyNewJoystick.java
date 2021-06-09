@@ -1,4 +1,4 @@
-package com.journaldev.myjoystickapp.views;
+package com.sapir.myjoystickapp.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -197,9 +197,11 @@ public class MyNewJoystick extends View  {
                 ///while pressed-changed location to the first cordinted that has been pressed
                 Log.d("DEBUG_TAG","Action was DOWN");
                 currentLittleCircleX=event.getX();
+
                 currentLittleCircleY=event.getY();
-                if (mCallback != null)
-                    mCallback.onMove(getAngle(), getStrength());
+
+               /* if (mCallback != null)
+                    mCallback.onMove(getAngle(), getStrength());*/
                 break;
             case (MotionEvent.ACTION_MOVE) :
                 ///while mouse move,changed accorinly
@@ -227,12 +229,21 @@ public class MyNewJoystick extends View  {
             default :
                 return super.onTouchEvent(event);
         }
+        /*double currentRX=currentLittleCircleX - anotherStratXLittleCIrcle;
+        if(currentRX>radiousOfBigCircle){
+            currentLittleCircleX=anotherStratXLittleCIrcle+radiousOfBigCircle;
+        }
+        double currentRY=currentLittleCircleY - anotherStratYLittleCIrcle;
+        if(currentRY>radiousOfBigCircle){
+            currentLittleCircleY=anotherStratYLittleCIrcle+radiousOfBigCircle;
+        }*/
+
 
         ///cumptue the current radius
         ///check if we cross the borader
         double c = Math.sqrt((currentLittleCircleX - anotherStratXLittleCIrcle) * (currentLittleCircleX - anotherStratXLittleCIrcle)
                 + (currentLittleCircleY - anotherStratYLittleCIrcle) * (currentLittleCircleY - anotherStratYLittleCIrcle));
-        if (c > radiousOfBigCircle ) {
+        if (c > radiousOfBigCircle) {
             currentLittleCircleX = (int) ((currentLittleCircleX - anotherStratXLittleCIrcle) * radiousOfBigCircle / c + anotherStratXLittleCIrcle);
             currentLittleCircleY = (int) ((currentLittleCircleY - anotherStratYLittleCIrcle) * radiousOfBigCircle / c + anotherStratYLittleCIrcle);
         }

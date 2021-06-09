@@ -1,20 +1,18 @@
-package com.journaldev.myjoystickapp.viewmodels;
+package com.sapir.myjoystickapp.viewmodels;
 
 import android.app.ProgressDialog;
 import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.fragment.app.FragmentManager;
 
-import com.journaldev.myjoystickapp.model.ConnectStatus;
-import com.journaldev.myjoystickapp.model.MyThreadPool;
-import com.journaldev.myjoystickapp.model.User;
-import com.journaldev.myjoystickapp.BR;
-import com.journaldev.myjoystickapp.model.clientToServer;
-import com.journaldev.myjoystickapp.views.MainActivity;
-import com.journaldev.myjoystickapp.views.MyNewJoystick;
-import com.journaldev.myjoystickapp.views.TheJoystick;
+import com.sapir.myjoystickapp.model.ConnectStatus;
+import com.sapir.myjoystickapp.model.MyThreadPool;
+import com.sapir.myjoystickapp.model.User;
+import com.sapir.myjoystickapp.BR;
+import com.sapir.myjoystickapp.model.clientToServer;
+import com.sapir.myjoystickapp.views.MyNewJoystick;
+import com.sapir.myjoystickapp.views.TheJoystick;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -52,7 +50,7 @@ TheJoystick joy;
        this.c= new clientToServer();
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus();
-      this.s1.mystate=0;
+      this.s1.mystate=-1;
 this.joy1=joyy2;
        joy=new TheJoystick(this.c,joyy2);
         joy.doInChange(this.pool,this.s1);
@@ -98,9 +96,9 @@ this.nDialog=nDialog2;
         c.setPort(myport);
     }
 
-    public int isClientConnet( ) {
+    public ConnectStatus isClientConnet( ) {
         final CountDownLatch latch = new CountDownLatch(1);
-        s1.mystate=0;
+        s1.mystate=-1;
         Runnable r1 = new MyThreadPool.connectTask(this.c,s1);
         Runnable r2 = new MyThreadPool.LoadIOTask(this.c,s1);
 
@@ -108,15 +106,15 @@ this.nDialog=nDialog2;
         pool.execute(r1);
         pool.execute(r2);
         pool.execute(t);
-        try {
+      try {
             latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        int num= s1.mystate;
+      ///  int num= s1.mystate;
 
-        return num;
+        return s1;
     }
 
 
@@ -127,20 +125,51 @@ this.nDialog=nDialog2;
         String Message = "waiting for the server...";
         setToastMessage(Message);
 
+        int status=0;
+        ConnectStatus x= new  ConnectStatus();
+        nDialog.show();
+        x.mystate=-1;
+        x=isClientConnet();
 
+        while(x.mystate==-1){
     ///    nDialog.show();
-    int status=isClientConnet();
+  /// status=isClientConnet();
 
- ///  nDialog.dismiss();
+        Log.d("ss","dddr ");
+       //// nDialog.dismiss();
+/*
+   while(x.mystate==-1){
 
-        if (status==1){      ///  if (user.isInputDataValid())
+       try {
+           nDialog.show();
+           Thread.sleep(5000);
+           nDialog.dismiss();
+
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+
+   }
+
+*/
+
+ ///
+        ///    nDialog.dismiss();
+        if (status==1){
+            nDialog.dismiss();///  if (user.isInputDataValid())
             String successMessage = "Login was successful";
             setToastMessage(successMessage);
+            return;
            //// Runnable r1 = new MyThreadPool.sendData(c,1,s1);
             ///pool.execute(r1);
         }
-        else{
+        if (status==0){
+            nDialog.dismiss();
             String errorMessage = "IP or Port not valid";
-            setToastMessage(errorMessage);}
+            setToastMessage(errorMessage);
+            return;
+        }
+          ///
     }
-}
+
+}}

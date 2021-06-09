@@ -1,4 +1,4 @@
-package com.journaldev.myjoystickapp.views;
+package com.sapir.myjoystickapp.views;
 
 
 import android.app.ProgressDialog;
@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
-import com.journaldev.myjoystickapp.R;
-import com.journaldev.myjoystickapp.databinding.ActivityMainBinding;
-import com.journaldev.myjoystickapp.viewmodels.LoginViewModel;
+import com.sapir.myjoystickapp.R;
+import com.sapir.myjoystickapp.databinding.ActivityMainBinding;
+import com.sapir.myjoystickapp.viewmodels.LoginViewModel;
 
 
 

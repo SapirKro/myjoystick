@@ -1,4 +1,4 @@
-package com.journaldev.myjoystickapp.views;
+package com.sapir.myjoystickapp.views;
 
 import android.content.Context;
 import android.view.View;
