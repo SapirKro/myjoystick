@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -34,15 +35,18 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
    ////     JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
-        ProgressDialog nDialog;
 
+        ProgressDialog nDialog;
+        EditText ip = (EditText) findViewById(R.id.inEmail);
+        EditText port = (EditText) findViewById(R.id.inPort);
+        String myip="192.168.1.103";
         nDialog = new ProgressDialog(MainActivity.this);
         nDialog.setMessage("Loading..");
         nDialog.setTitle("Get Data");
         nDialog.setIndeterminate(false);
         nDialog.setCancelable(true);
 
-        LoginViewModel lvm=new LoginViewModel(joystick1 , nDialog);
+        LoginViewModel lvm=new LoginViewModel(joystick1 , nDialog,myip);
       
 
 

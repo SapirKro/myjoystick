@@ -1,7 +1,7 @@
  package com.sapir.myjoystickapp.model;
 ///TODO FIX BUTTON THAT STUCK.
  ///TODO IS IT SUPOOSE TO MOVE AKWARDLY.
- ///TODO PUT JOYSTICK IN LVM,CHANGE THE JOURNLDEV NAME
+////TODO CHANGE THE IP TO WHAT IS WRINNTING IN THE TEXT BOXS
 import android.util.Log;
 
 
@@ -25,22 +25,27 @@ public class clientToServer {
     boolean isConnect;
 
     public clientToServer() {
-        this.IP="192.168.1.42";
+        this.IP="192.168.1.103";
         this.port=5400;
         isConnect=false;
         Log.d("clientToServer","server...");
     }
-
+    public clientToServer(String ip1) {
+        this.IP=ip1;
+        this.port=5400;
+        isConnect=false;
+        Log.d("clientToServer","server...");
+    }
     public int connectToServer() {
 
 int i=1;
         while (true) {
             try {
-                if(i>=3){
+                if(i>=30){
                     return 0;
                 }
                 Log.d("clientToServer","waiting for the server...try number "+i);
-                System.out.println("waiting for the server...try number "+i);
+               //// System.out.println("waiting for the server...try number "+i);
            ////     fg = new Socket( this.IP, this.port);
                 int timeout = 2000;
                 int port = this.port;

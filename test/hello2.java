@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 // Your First Program
-/*
+
 public class hello2{
 
     // ClientConnect.getInstance().closeClient(); {
@@ -17,14 +17,14 @@ public class hello2{
         try {
             Socket fg = new Socket("localhost", 5400); /// Socket fg = new
           ////  Socket("10.0.2.2", 5400);
-            BufferedReader in = new BufferedReader(new FileReader("reg_flight.csv"));
+           //// BufferedReader in = new BufferedReader(new FileReader("reg_flight.csv"));
             PrintWriter out = new PrintWriter(fg.getOutputStream(), true);
             String line = "asda";
             int v = 1;
             int i = 0;
             System.out.println("v is " + v + "\r\n");
             System.out.flush();
-            while (line != null) {
+            while (true) {
                 out.print("set /controls/flight/aileron " + v + "\r\n");
                 out.flush();
                 out.print("set /controls/flight/elevator " + v + "\r\n");
@@ -51,4 +51,3 @@ public class hello2{
 
     }
 }
-*/

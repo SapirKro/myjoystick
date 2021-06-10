@@ -10,6 +10,12 @@ import android.view.View;
 
 import android.view.MotionEvent;
 
+import com.sapir.myjoystickapp.model.ConnectStatus;
+import com.sapir.myjoystickapp.model.MyThreadPool;
+import com.sapir.myjoystickapp.model.clientToServer;
+
+import java.util.concurrent.ExecutorService;
+
 ////<<<---alirron--->>>>> X
 ////     /\
 ////     |
@@ -35,17 +41,21 @@ public class MyNewJoystick extends View  {
     static float x=400;
     static float y=400;
     static int r=0,g=0,b=0;
-
+    ExecutorService pool;
+    ConnectStatus s1;
     private long mLoopInterval =100;
     Paint paint = null;
     private float littleCircleRadisSize=70;
-
-    private float currentLittleCircleX = 0;
-    private float currentLittleCircleY = 0;
+    private clientToServer c111;
+    private double currentLittleCircleX = 0;
+    private double currentLittleCircleY = 0;
     private int anotherStratXLittleCIrcle = 400;
     private int anotherStratYLittleCIrcle = 400;
     private final int radiousOfBigCircle=300;
-
+    private double limitXmin=x-radiousOfBigCircle;
+    private double limitXmax=x+radiousOfBigCircle;
+   //// private float limitYmin=y-radiousOfBigCircle;
+    ///private float limitYmax=y+radiousOfBigCircle;
     private OnMoveListener mCallback;
 
 
@@ -186,39 +196,62 @@ public class MyNewJoystick extends View  {
         int angle = (int) Math.toDegrees(Math.atan2(anotherStratYLittleCIrcle - currentLittleCircleY, currentLittleCircleX - anotherStratXLittleCIrcle));
         return angle < 0 ? angle + 360 : angle; // make it as a regular counter-clock protractor
     }
+
+    public void addClientandPOOl(ExecutorService p1, ConnectStatus c, clientToServer sc){
+        this.pool=p1;
+        this.s1=c;
+        this.c111=sc;
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getActionMasked();
-
-
-
+        if(action==MotionEvent.ACTION_UP){
+            Log.d("DEBUG_TAG","Action was UP");
+            x=anotherStratXLittleCIrcle;
+            y=anotherStratYLittleCIrcle;
+             /*   if (mCallback != null)
+                    mCallback.onMove(getAngle(), getStrength());*/
+            sendinfo(this.x,this.y);
+            this.invalidate();
+            return true;
+        }
+        currentLittleCircleX=event.getX();
+        currentLittleCircleY=event.getY();
+        double c = Math.sqrt((currentLittleCircleX - anotherStratXLittleCIrcle) * (currentLittleCircleX - anotherStratXLittleCIrcle)
+                + (currentLittleCircleY - anotherStratYLittleCIrcle) * (currentLittleCircleY - anotherStratYLittleCIrcle));
+        if (c > radiousOfBigCircle) {
+            return true;
+           /// currentLittleCircleX = (int) ((currentLittleCircleX - anotherStratXLittleCIrcle) * radiousOfBigCircle / c + anotherStratXLittleCIrcle);
+           /// currentLittleCircleY = (int) ((currentLittleCircleY - anotherStratYLittleCIrcle) * radiousOfBigCircle / c + anotherStratYLittleCIrcle);
+        }
         switch(action) {
             case (MotionEvent.ACTION_DOWN) :
                 ///while pressed-changed location to the first cordinted that has been pressed
                 Log.d("DEBUG_TAG","Action was DOWN");
-                currentLittleCircleX=event.getX();
+             ///   currentLittleCircleX=event.getX();
 
-                currentLittleCircleY=event.getY();
+              //  currentLittleCircleY=event.getY();
 
                /* if (mCallback != null)
                     mCallback.onMove(getAngle(), getStrength());*/
                 break;
             case (MotionEvent.ACTION_MOVE) :
                 ///while mouse move,changed accorinly
-               /// Log.d("DEBUG_TAG","Action was MOVE");
-                currentLittleCircleX=event.getX();
-                currentLittleCircleY=event.getY();
+                Log.d("DEBUG_TAG","Action was MOVE");
+               /// currentLittleCircleX=event.getX();
+                ///currentLittleCircleY=event.getY();
            /*    if (mCallback != null)
                     mCallback.onMove(getAngle(), getStrength());*/
                 break;
             case (MotionEvent.ACTION_UP) :
                 ///while relsed-changed location to the last cordinted that has been pressed
                 Log.d("DEBUG_TAG","Action was UP");
-                currentLittleCircleX=anotherStratXLittleCIrcle;
-                currentLittleCircleY=anotherStratYLittleCIrcle;
+                x=anotherStratXLittleCIrcle;
+                y=anotherStratYLittleCIrcle;
              /*   if (mCallback != null)
                     mCallback.onMove(getAngle(), getStrength());*/
-                break;
+                this.invalidate();
+                return true;
             case (MotionEvent.ACTION_CANCEL) :
                 Log.d("DEBUG_TAG","Action was CANCEL");
                 return true;
@@ -229,48 +262,43 @@ public class MyNewJoystick extends View  {
             default :
                 return super.onTouchEvent(event);
         }
-        /*double currentRX=currentLittleCircleX - anotherStratXLittleCIrcle;
-        if(currentRX>radiousOfBigCircle){
-            currentLittleCircleX=anotherStratXLittleCIrcle+radiousOfBigCircle;
-        }
-        double currentRY=currentLittleCircleY - anotherStratYLittleCIrcle;
-        if(currentRY>radiousOfBigCircle){
-            currentLittleCircleY=anotherStratYLittleCIrcle+radiousOfBigCircle;
-        }*/
-
 
         ///cumptue the current radius
         ///check if we cross the borader
-        double c = Math.sqrt((currentLittleCircleX - anotherStratXLittleCIrcle) * (currentLittleCircleX - anotherStratXLittleCIrcle)
-                + (currentLittleCircleY - anotherStratYLittleCIrcle) * (currentLittleCircleY - anotherStratYLittleCIrcle));
-        if (c > radiousOfBigCircle) {
-            currentLittleCircleX = (int) ((currentLittleCircleX - anotherStratXLittleCIrcle) * radiousOfBigCircle / c + anotherStratXLittleCIrcle);
-            currentLittleCircleY = (int) ((currentLittleCircleY - anotherStratYLittleCIrcle) * radiousOfBigCircle / c + anotherStratYLittleCIrcle);
-        }
-        x=currentLittleCircleX;
-        y=currentLittleCircleY;
-        if (mCallback != null)
-            mCallback.onMove(getAngle(), getStrength());
+
+        x=(float)currentLittleCircleX;
+        y=(float)currentLittleCircleY;
+      /*  if (mCallback != null)
+            mCallback.onMove(getAngle(), getStrength());*/
+
+        sendinfo(this.x ,this.y);
         this.invalidate();
         return true;
-    /*x=(int)event.getX()-(radius/2);      //logic to plot the circle in exact touch place
-    y=(int)event.getY()-(radius/2);
-    //System.out.println("X,Y:"+"x"+","+y);
-    randColor();
-    invalidate();
-
-
-    if (event.getAction() == MotionEvent.ACTION_UP) {
-        paint.setARGB(12, r, g, b);
-    }
-    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        paint.setARGB(12, r, g, b);
-    }
-*/
-
 
     }
 
+    public double distance(float x,float y,float centerx ,float centery){
+        double d = Math.sqrt((x - centerx) * (x - centerx) + (y - centery) *(y - centery) );
+        return d;
+    }
+public void sendinfo(float x ,float y){
+double distanceXfromCenter=distance(x,0,this.anotherStratXLittleCIrcle ,0);
+    double distanceYfromCenter=distance(0,y,0 ,this.anotherStratYLittleCIrcle);
+    if(x<this.anotherStratXLittleCIrcle){
+        distanceXfromCenter=distanceXfromCenter*(-1);
+    }
+    if(y<this.anotherStratYLittleCIrcle){
+        distanceYfromCenter=distanceYfromCenter*(-1);
+    }
+    distanceYfromCenter=(distanceYfromCenter/this.radiousOfBigCircle);
+    distanceXfromCenter=(distanceXfromCenter/this.radiousOfBigCircle);
+    Log.d("TheJoystick","Ymove "+distanceYfromCenter);
+    Log.d("TheJoystick","Xmove "+distanceXfromCenter);
+   if(s1.mystate==1){
+        Runnable r1 = new MyThreadPool.sendData(c111,distanceXfromCenter,distanceYfromCenter,s1);
+
+        pool.execute(r1);}
+}
 
 
 }
