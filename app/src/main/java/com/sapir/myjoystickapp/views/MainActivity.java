@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
 
         ProgressDialog nDialog;
-        EditText ip = (EditText) findViewById(R.id.inEmail);
-        EditText port = (EditText) findViewById(R.id.inPort);
-        String myip="192.168.1.103";
+        EditText ip =  findViewById(R.id.inEmail);
+        String myip=ip.getText().toString();
+
         nDialog = new ProgressDialog(MainActivity.this);
         nDialog.setMessage("Loading..");
         nDialog.setTitle("Get Data");

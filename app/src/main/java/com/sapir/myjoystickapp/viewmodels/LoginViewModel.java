@@ -12,14 +12,12 @@ import com.sapir.myjoystickapp.model.User;
 import com.sapir.myjoystickapp.BR;
 import com.sapir.myjoystickapp.model.clientToServer;
 import com.sapir.myjoystickapp.views.MyNewJoystick;
-import com.sapir.myjoystickapp.views.TheJoystick;
+
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
 
 
 public class LoginViewModel extends BaseObservable {
@@ -58,7 +56,7 @@ this.joy1=joyy2;
       ///  joy1.doInChange(this.pool,this.s1);
 this.nDialog=nDialog2;
     }
-
+/*
     public void doInChange() {
         MyNewJoystick.OnMoveListener l1=(angle, strength) -> {
 
@@ -109,7 +107,7 @@ this.nDialog=nDialog2;
         this.joy1.setOnMoveListener(l1,100);
 
     }
-
+*/
 ////change th from 0 to 1
     public void sendThrottleToServer(  int progressChangedValue) {
 

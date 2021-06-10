@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
             android:hint="192.168.1.103"
+            android:text="192.168.1.103"
             android:inputType="text"
             android:padding="8dp" />
 
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:afterTextChanged="@{(editable)->viewModel.afterPortTextChanged(editable)}"
             android:hint="5400"
+            android:text="5400"
             android:inputType="number"
             android:padding="8dp" />
 

@@ -1,6 +1,7 @@
 package com.sapir.myjoystickapp.views;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,6 +17,9 @@ import com.sapir.myjoystickapp.model.clientToServer;
 
 import java.util.concurrent.ExecutorService;
 
+/**
+ *
+ */
 ////<<<---alirron--->>>>> X
 ////     /\
 ////     |
@@ -25,38 +29,25 @@ import java.util.concurrent.ExecutorService;
 ///////  \/
 public class MyNewJoystick extends View  {
 
-    public interface OnMoveListener {
-
-        /**
-         * Called when a JoystickView's button has been moved
-         * @param angle current angle
-         * @param strength current strength
-         */
-        void onMove(int angle, int strength);
-    }
 
 
-
-
-    static float x=400;
-    static float y=400;
+    static float x;
+    static float y;
     static int r=0,g=0,b=0;
     ExecutorService pool;
     ConnectStatus s1;
-    private long mLoopInterval =100;
+    float littleCircleRadisSize;
     Paint paint = null;
-    private float littleCircleRadisSize=70;
     private clientToServer c111;
     private double currentLittleCircleX = 0;
     private double currentLittleCircleY = 0;
-    private int anotherStratXLittleCIrcle = 400;
-    private int anotherStratYLittleCIrcle = 400;
-    private final int radiousOfBigCircle=300;
-    private double limitXmin=x-radiousOfBigCircle;
-    private double limitXmax=x+radiousOfBigCircle;
-   //// private float limitYmin=y-radiousOfBigCircle;
+    private int anotherStratXLittleCIrcle;
+    private int anotherStratYLittleCIrcle;
+    private int radiousOfBigCircle;
+    private int radiousOfBigCircleWithBorder;
+    //// private float limitYmin=y-radiousOfBigCircle;
     ///private float limitYmax=y+radiousOfBigCircle;
-    private OnMoveListener mCallback;
+
 
 
     public MyNewJoystick(Context context) {
@@ -71,30 +62,22 @@ public class MyNewJoystick extends View  {
 
     }
 
-    /**
-     * Register a callback to be invoked when this JoystickView's button is moved
-     * @param l The callback that will run
-     * @param loopInterval Refresh rate to be invoked in milliseconds
-     */
-    public void setOnMoveListener(OnMoveListener l, int loopInterval) {
-        mCallback = l;
-        mLoopInterval = loopInterval;
-    }
+
     public MyNewJoystick(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init();
 
 
     }
 
     public MyNewJoystick(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context);
+        init();
 
 
     }
 
-    private void init(Context context) {
+    private void init() {
         paint = new Paint();
     }
  /*   protected void BigCircle(Canvas canvas) {
@@ -108,13 +91,13 @@ public class MyNewJoystick extends View  {
         // Use Color.parseColor to define HTML colors
         paint.setColor(Color.parseColor("#000000"));
         canvas.drawCircle(x / 2, y / 2, radius, paint);
-    }*/
+    }
 
     private void initPosition() {
         // get the center of view to position circle
        anotherStratXLittleCIrcle = (int) (currentLittleCircleX = getWidth() / 2);
        anotherStratYLittleCIrcle = (int) (currentLittleCircleY = getWidth() / 2);
-    }
+    }*/
 
    /* protected void littleCircle(Canvas canvas,int x,int y) {
 
@@ -135,14 +118,15 @@ public class MyNewJoystick extends View  {
        //// initPosition();
         //drawing the border
         paint.setColor(Color.parseColor("#000000"));
-        canvas.drawCircle(anotherStratXLittleCIrcle ,anotherStratYLittleCIrcle ,(radiousOfBigCircle+8),paint);
+        canvas.drawCircle(anotherStratXLittleCIrcle ,anotherStratYLittleCIrcle ,radiousOfBigCircleWithBorder,paint);
 ///big circle
         paint.setColor(Color.parseColor("#252525"));
         canvas.drawCircle(anotherStratXLittleCIrcle,anotherStratYLittleCIrcle ,radiousOfBigCircle,paint);
 
         ///little circle
         paint.setColor(Color.parseColor("#A3060D"));
-        canvas.drawCircle(x,y,littleCircleRadisSize,paint);
+
+        canvas.drawCircle(x,y, littleCircleRadisSize,paint);
 
         /*
         super.onDraw(canvas);
@@ -186,7 +170,7 @@ public class MyNewJoystick extends View  {
      * Process the strength as a percentage of the distance between the center and the border.
      * @return the strength of the button
      */
-    private int getStrength() {
+    /*private int getStrength() {
         return (int) (100 * Math.sqrt((currentLittleCircleX - anotherStratXLittleCIrcle)
                 * (currentLittleCircleX - anotherStratXLittleCIrcle) + (currentLittleCircleY - anotherStratYLittleCIrcle)
                 * (currentLittleCircleY - anotherStratYLittleCIrcle)) / radiousOfBigCircle);
@@ -195,7 +179,7 @@ public class MyNewJoystick extends View  {
     private int getAngle() {
         int angle = (int) Math.toDegrees(Math.atan2(anotherStratYLittleCIrcle - currentLittleCircleY, currentLittleCircleX - anotherStratXLittleCIrcle));
         return angle < 0 ? angle + 360 : angle; // make it as a regular counter-clock protractor
-    }
+    }*/
 
     public void addClientandPOOl(ExecutorService p1, ConnectStatus c, clientToServer sc){
         this.pool=p1;
@@ -276,7 +260,33 @@ public class MyNewJoystick extends View  {
         return true;
 
     }
+    /**
+     * This is called during layout when the size of this view has changed.
+     * Here we get the center of the view and the radius to draw all the shapes.
+     *
+     * @param w Current width of this view.
+     * @param h Current height of this view.
+     * @param oldW Old width of this view.
+     * @param oldH Old height of this view.
+     */
+    @Override
+    protected void onSizeChanged(int w, int h, int oldW, int oldH) {
+        super.onSizeChanged(w, h, oldW, oldH);
 
+       /// initPosition();
+       anotherStratXLittleCIrcle = (int) (currentLittleCircleX = getWidth() / 2);
+       anotherStratYLittleCIrcle = (int) (currentLittleCircleY = getHeight() / 2);
+        x=anotherStratXLittleCIrcle;
+        y= anotherStratYLittleCIrcle;
+       // radius based on smallest size : height OR width
+        int d = Math.min(w, h);
+        this.radiousOfBigCircle=(int) ((d / 2.7) );
+
+       //// mButtonRadius = (int) (d / 2 * littleCircleRadisSize);
+        littleCircleRadisSize = (int) ((d / 11) );
+        radiousOfBigCircleWithBorder= this.radiousOfBigCircle+8;
+
+    }
     public double distance(float x,float y,float centerx ,float centery){
         double d = Math.sqrt((x - centerx) * (x - centerx) + (y - centery) *(y - centery) );
         return d;

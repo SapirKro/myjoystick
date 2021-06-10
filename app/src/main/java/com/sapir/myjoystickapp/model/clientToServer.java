@@ -1,7 +1,7 @@
  package com.sapir.myjoystickapp.model;
 ///TODO FIX BUTTON THAT STUCK.
- ///TODO IS IT SUPOOSE TO MOVE AKWARDLY.
-////TODO CHANGE THE IP TO WHAT IS WRINNTING IN THE TEXT BOXS
+////TODO TO GET THE IP AND PORT WHILE CLICKING LOGIN
+
 import android.util.Log;
 
 
@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
+
 
 ///fgfs --altitude=5000 --heading=0 --vc=110
 // Your First Program
@@ -24,12 +24,12 @@ public class clientToServer {
     PrintWriter out;
     boolean isConnect;
 
-    public clientToServer() {
+    /*public clientToServer() {
         this.IP="192.168.1.103";
         this.port=5400;
         isConnect=false;
         Log.d("clientToServer","server...");
-    }
+    }*/
     public clientToServer(String ip1) {
         this.IP=ip1;
         this.port=5400;
@@ -142,9 +142,7 @@ int i=1;
           out.print("I connected to the server! :) " + "\r\n");
           out.flush();
       }
-        if(state==0){
-       return;
-        }
+
 
 
 

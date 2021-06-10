@@ -30,11 +30,11 @@ public class TheJoystick  {
         this.j1=j2;
     }
 
-
+/*
     public void doInChange(ExecutorService pool, ConnectStatus s1){
 
 
-        MyNewJoystick.OnMoveListener l1=(angle, strength) -> {
+       /// MyNewJoystick.OnMoveListener l1=(angle, strength) -> {
 
             ///angle=45;
             ///  strength=100;
@@ -102,8 +102,7 @@ public class TheJoystick  {
 
            pool.execute(r1);}
 
-        };*/
-
+        };
        //// this.joystick.setOnMoveListener(ll,100);
-    }
+    }*/
 }
