@@ -171,13 +171,13 @@ this.nDialog=nDialog2;
 
 
     public void onLoginClicked() {
-        if(this.s1.mystate==1){
+        if (this.s1.mystate == 1) {
             return;
         }
         String Message = "waiting for the server...";
         setToastMessage(Message);
-
-        int status=0;
+        return;
+      /* int status=0;
         ConnectStatus x= new  ConnectStatus();
        //// nDialog.show();
        /// x.mystate=-1;
@@ -203,7 +203,7 @@ this.nDialog=nDialog2;
 
    }
 
-*/
+
 
  ///
         ///    nDialog.dismiss();
@@ -222,6 +222,6 @@ this.nDialog=nDialog2;
             return;
         }
           ///
+    }*/
     }
-
 }
