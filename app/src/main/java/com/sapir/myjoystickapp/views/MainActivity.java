@@ -35,7 +35,14 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
    ////     JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
-
+       MyNewJoystick.OnMoveListener   ll= new MyNewJoystick.OnMoveListener() {
+            @Override
+            public void onMove(double x, double y) {
+                Log.d("fromMain","Ymove "+y);
+                Log.d("fromMain","Xmove "+x);
+            }
+        };
+        joystick1.setOnMoveListener(ll);
         ProgressDialog nDialog;
         EditText ip =  findViewById(R.id.inEmail);
         String myip=ip.getText().toString();

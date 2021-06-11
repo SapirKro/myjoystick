@@ -1,7 +1,6 @@
 package com.sapir.myjoystickapp.views;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -45,11 +44,35 @@ public class MyNewJoystick extends View  {
     private int anotherStratYLittleCIrcle;
     private int radiousOfBigCircle;
     private int radiousOfBigCircleWithBorder;
+
+
+    public MyNewJoystick(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public MyNewJoystick(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
+    }
+
+    private void init(Context context) {
+        paint = new Paint();
+        //do stuff that was in your original constructor...
+    }
     //// private float limitYmin=y-radiousOfBigCircle;
     ///private float limitYmax=y+radiousOfBigCircle;
 
+    /**
+     * Interface definition for a callback to be invoked when a
+     * JoystickView's button is moved
+     */
+   public interface OnMoveListener {
 
 
+        void onMove(double x, double y);
+    }
+  private OnMoveListener mCallback;
     public MyNewJoystick(Context context) {
         super(context);
         paint=new Paint();
@@ -63,19 +86,6 @@ public class MyNewJoystick extends View  {
     }
 
 
-    public MyNewJoystick(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-
-
-    }
-
-    public MyNewJoystick(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init();
-
-
-    }
 
     private void init() {
         paint = new Paint();
@@ -180,7 +190,10 @@ public class MyNewJoystick extends View  {
         int angle = (int) Math.toDegrees(Math.atan2(anotherStratYLittleCIrcle - currentLittleCircleY, currentLittleCircleX - anotherStratXLittleCIrcle));
         return angle < 0 ? angle + 360 : angle; // make it as a regular counter-clock protractor
     }*/
+    public void setOnMoveListener(OnMoveListener l) {
+        mCallback = l;
 
+    }
     public void addClientandPOOl(ExecutorService p1, ConnectStatus c, clientToServer sc){
         this.pool=p1;
         this.s1=c;
@@ -252,8 +265,8 @@ public class MyNewJoystick extends View  {
 
         x=(float)currentLittleCircleX;
         y=(float)currentLittleCircleY;
-      /*  if (mCallback != null)
-            mCallback.onMove(getAngle(), getStrength());*/
+       if (mCallback != null)
+            mCallback.onMove((getX(this.x)), (getY(this.y)));
 
         sendinfo(this.x ,this.y);
         this.invalidate();
@@ -290,6 +303,31 @@ public class MyNewJoystick extends View  {
     public double distance(float x,float y,float centerx ,float centery){
         double d = Math.sqrt((x - centerx) * (x - centerx) + (y - centery) *(y - centery) );
         return d;
+    }
+
+    public double getX(float x ) {
+        double distanceXfromCenter=distance(x,0,this.anotherStratXLittleCIrcle ,0);
+
+        if(x<this.anotherStratXLittleCIrcle){
+            distanceXfromCenter=distanceXfromCenter*(-1);
+        }
+
+        distanceXfromCenter=(distanceXfromCenter/this.radiousOfBigCircle);
+return distanceXfromCenter;
+
+
+    }
+
+    public double getY(float y ) {
+
+        double distanceYfromCenter=distance(0,y,0 ,this.anotherStratYLittleCIrcle);
+
+        if(y<this.anotherStratYLittleCIrcle){
+            distanceYfromCenter=distanceYfromCenter*(-1);
+        }
+        distanceYfromCenter=(distanceYfromCenter/this.radiousOfBigCircle);
+
+return    distanceYfromCenter;
     }
 public void sendinfo(float x ,float y){
 double distanceXfromCenter=distance(x,0,this.anotherStratXLittleCIrcle ,0);
