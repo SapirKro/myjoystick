@@ -12,6 +12,7 @@ import com.sapir.myjoystickapp.model.User;
 import com.sapir.myjoystickapp.BR;
 import com.sapir.myjoystickapp.model.clientToServer;
 import com.sapir.myjoystickapp.views.MyNewJoystick;
+import com.wizchen.topmessage.TopMessageManager;
 
 
 import java.util.concurrent.CountDownLatch;
@@ -48,14 +49,13 @@ public class LoginViewModel extends BaseObservable {
             ///     nDialog.dismiss();///  if (user.isInputDataValid())
             String successMessage = "Login was successful";
             setToastMessage(successMessage);
-            String successMessage1 = "Login was successful1";
-            setToastMessage(successMessage1);
-            String successMessage2 = "Login was successful2";
-            setToastMessage(successMessage2);
+
+
 
         }else{
-            String successMessage = "IP or Port not valid";
+          String successMessage = "IP or Port not valid";
             setToastMessage(successMessage);
+           /// TopMessageManager.showSuccess("ASDADA");
         }
 
     }

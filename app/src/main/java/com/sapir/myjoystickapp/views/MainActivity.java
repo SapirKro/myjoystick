@@ -2,6 +2,7 @@ package com.sapir.myjoystickapp.views;
 
 
 import android.app.ProgressDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
@@ -17,12 +19,13 @@ import androidx.databinding.DataBindingUtil;
 import com.sapir.myjoystickapp.R;
 import com.sapir.myjoystickapp.databinding.ActivityMainBinding;
 import com.sapir.myjoystickapp.viewmodels.LoginViewModel;
-
+import com.wizchen.topmessage.util.TopActivityManager;
 
 
 public class MainActivity extends AppCompatActivity {
     SeekBar customSeekBar;
     SeekBar rudderSeekBar;
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.print("first statement. ");
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
    ////
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
    ////     JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+        registerActivityLifecycleCallbacks(TopActivityManager.getInstance());
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
 
         ProgressDialog nDialog;

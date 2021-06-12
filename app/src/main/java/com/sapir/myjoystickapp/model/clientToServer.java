@@ -43,7 +43,7 @@ public class clientToServer {
 int i=1;
         while (true) {
             try {
-                if(i>=30){
+                if(i>=3){
                     return 0;
                 }
                 Log.d("clientToServer","waiting for the server...try number "+i);
