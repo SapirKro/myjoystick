@@ -1,5 +1,6 @@
 package com.sapir.myjoystickapp.model;
 
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 public class MyThreadPool {
@@ -72,10 +73,11 @@ c.sendData(1);
         {
             int num=this.c.connectToServer();
             if(num==1){
+                s2.setConnectStatus(1);
                 this.s2.mystate=1;
             }
             else{
-                this.s2.mystate=0;
+                s2.setConnectStatus(0);
             }
 
 
@@ -181,6 +183,51 @@ c.sendData(1);
         }
 
     }
+
+    public static class RunnableExample  extends Task {
+        private Object result = null;
+
+        public RunnableExample(clientToServer c1, ConnectStatus s1) {
+            super(c1, s1);
+        }
+
+        public void run()
+        {
+            Random generator = new Random();
+            Integer randomNumber = generator.nextInt(5);
+
+            // As run cannot throw any Exception
+            try
+            {
+                Thread.sleep(randomNumber * 3000);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+
+            // Store the return value in result when done
+            result = randomNumber;
+
+            // Wake up threads blocked on the get() method
+            synchronized(this)
+            {
+                notifyAll();
+            }
+        }
+
+        public synchronized Object get()
+                throws InterruptedException
+        {
+            while (result == null)
+                wait();
+
+            return result;
+        }
+
+    }
+
+
 
    /* public static class Test
     {

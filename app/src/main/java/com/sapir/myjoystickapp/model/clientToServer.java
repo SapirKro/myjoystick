@@ -1,6 +1,8 @@
  package com.sapir.myjoystickapp.model;
 ///TODO FIX BUTTON THAT STUCK.
 ////TODO TO GET THE IP AND PORT WHILE CLICKING LOGIN
+ ///todo put every info from view in class and send to the lvm as paramter
+ ///todo add disconnect option
 
 import android.util.Log;
 

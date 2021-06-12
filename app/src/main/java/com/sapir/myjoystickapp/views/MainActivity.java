@@ -104,8 +104,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         activityMainBinding.setViewModel(lvm);
         activityMainBinding.executePendingBindings();
+
     }
 
 

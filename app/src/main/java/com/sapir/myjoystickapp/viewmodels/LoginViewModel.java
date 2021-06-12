@@ -40,15 +40,31 @@ public class LoginViewModel extends BaseObservable {
     private void setToastMessage(String toastMessage) {
 
         this.toastMessage = toastMessage;
-        notifyPropertyChanged(BR.toastMessage);
+      notifyPropertyChanged(BR.toastMessage);
     }
+    public void update(){
+        Log.d("lvm"," update .server status:"+this.s1.mystate);
+        if (this.s1.mystate==1){
+            ///     nDialog.dismiss();///  if (user.isInputDataValid())
+            String successMessage = "Login was successful";
+            setToastMessage(successMessage);
+            String successMessage1 = "Login was successful1";
+            setToastMessage(successMessage1);
+            String successMessage2 = "Login was successful2";
+            setToastMessage(successMessage2);
 
+        }else{
+            String successMessage = "IP or Port not valid";
+            setToastMessage(successMessage);
+        }
+
+    }
     public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2,String ip) {
 
         user = new User("", "");
        this.c= new clientToServer(ip);
        this.pool= Executors.newFixedThreadPool(1);
-      this.s1=new ConnectStatus();
+      this.s1=new ConnectStatus(this);
       this.s1.mystate=-1;
 this.joy1=joyy2;
        /// doInChange();
@@ -148,34 +164,50 @@ this.nDialog=nDialog2;
         c.setPort(myport);
     }
 
-    public int isClientConnet( ) {
-        final CountDownLatch latch = new CountDownLatch(1);
+    public void isClientConnet( ) {
+      ///  final CountDownLatch latch = new CountDownLatch(1);
         s1.mystate=-1;
         Runnable r1 = new MyThreadPool.connectTask(this.c,s1);
         Runnable r2 = new MyThreadPool.LoadIOTask(this.c,s1);
 
-        MyThreadPool.Task t=new MyThreadPool.conncetis(this.c,latch,s1);
+      ///  MyThreadPool.Task t=new MyThreadPool.conncetis(this.c,latch,s1);
         pool.execute(r1);
         pool.execute(r2);
-        pool.execute(t);
-      try {
+      ///  pool.execute(t);
+     /* try {
             latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        int num= s1.mystate;
+        int num= s1.mystate;*/
 
-        return num;
+        return ;
     }
 
+    public void testrunnable() {
+        MyThreadPool.RunnableExample[] randomNumberTasks = new MyThreadPool.RunnableExample[5];
+
+        for (int i = 0; i < 5; i++)
+        {
+            randomNumberTasks[i] = new MyThreadPool.RunnableExample(this.c,this.s1);
+
+            pool.execute(randomNumberTasks[i]);
+
+        }
+
+    }
 
     public void onLoginClicked() {
+
         if (this.s1.mystate == 1) {
             return;
         }
+     ///   testrunnable();
         String Message = "waiting for the server...";
         setToastMessage(Message);
+
+       isClientConnet();
         return;
       /* int status=0;
         ConnectStatus x= new  ConnectStatus();
