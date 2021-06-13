@@ -18,12 +18,12 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/inEmail"
+            android:id="@+id/inIP"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:afterTextChanged="@{(editable)->viewModel.afterEmailTextChanged(editable)}"
+            android:afterTextChanged="@{(editable)->viewModel.afterIPTextChanged(editable)}"
             android:hint="192.168.1.103"
-            android:text="@={viewModel.userEmail}"
+            android:text="@={viewModel.clientIP}"
             android:inputType="text"
             android:padding="8dp" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:afterTextChanged="@{(editable)->viewModel.afterPortTextChanged(editable)}"
             android:hint="5400"
-            android:text="@={viewModel.userPassword}"
+            android:text="@={viewModel.clientPassword}"
             android:inputType="number"
             android:padding="8dp" />
 

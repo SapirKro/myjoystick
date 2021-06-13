@@ -8,7 +8,7 @@ import androidx.databinding.Bindable;
 
 import com.sapir.myjoystickapp.model.ConnectStatus;
 import com.sapir.myjoystickapp.model.MyThreadPool;
-import com.sapir.myjoystickapp.model.User;
+import com.sapir.myjoystickapp.model.Client;
 import com.sapir.myjoystickapp.BR;
 import com.sapir.myjoystickapp.model.clientToServer;
 import com.sapir.myjoystickapp.views.MyNewJoystick;
@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 
 public class LoginViewModel extends BaseObservable {
-    private final User user;
+    private final Client client;
     private final clientToServer c;
     ExecutorService pool;
     ConnectStatus s1;
@@ -30,24 +30,24 @@ public class LoginViewModel extends BaseObservable {
     public String toastMessage = null;
 
 
-    public void setUserEmail(String email) {
-        user.setEmail(email);
-        notifyPropertyChanged(BR.userEmail);
+    public void setClientIP(String email) {
+        client.setIP(email);
+        notifyPropertyChanged(BR.clientIP);
     }
 
     @Bindable
-    public String getUserEmail() {
-        return user.getEmail();
+    public String getClientIP() {
+        return client.getIP();
     }
 
     @Bindable
-    public String getUserPassword() {
-        return user.getPort();
+    public String getClientPassword() {
+        return client.getPort();
     }
 
-    public void setUserPassword(String password) {
-        user.setPort(password);
-        notifyPropertyChanged(BR.userPassword);
+    public void setClientPassword(String password) {
+        client.setPort(password);
+        notifyPropertyChanged(BR.clientPassword);
     }
 
     public String getToastMessage() {
@@ -64,7 +64,7 @@ public class LoginViewModel extends BaseObservable {
         Log.d("lvm"," update .server status:"+this.s1.mystate);
         nDialog.dismiss();
         if (this.s1.mystate==1){
-            ///     nDialog.dismiss();///  if (user.isInputDataValid())
+            ///     nDialog.dismiss();///  if (client.isInputDataValid())
             String successMessage = "Login was successful";
             setToastMessage(successMessage);
 
@@ -79,7 +79,7 @@ public class LoginViewModel extends BaseObservable {
     }
     public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2) {
 
-        user = new User("", "");
+        client = new Client("", "");
        this.c= new clientToServer();
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus(this);
@@ -168,15 +168,15 @@ this.nDialog=nDialog2;
 
 
     }
-    public void afterEmailTextChanged(CharSequence s) {
+    public void afterIPTextChanged(CharSequence s) {
 
-        user.setEmail(s.toString());
+        client.setIP(s.toString());
         c.setIP(s.toString());
 
     }
 
     public void afterPortTextChanged(CharSequence s) {
-        user.setPort(s.toString());
+        client.setPort(s.toString());
         String Port=s.toString();
         int myport= Integer.parseInt(Port);
         c.setPort(myport);
@@ -230,8 +230,8 @@ this.nDialog=nDialog2;
      ///   testrunnable();
         String Message = "waiting for the server...";
         setToastMessage(Message);
-String myip=user.getEmail();
-String myport=user.getPort();
+String myip=client.getIP();
+String myport=client.getPort();
         int myport1=0;
 if((!(myport.equals("")))){
 myport1=Integer.parseInt(myport);}
@@ -277,7 +277,7 @@ c.setPort(myport1);
  ///
         ///    nDialog.dismiss();
         if (ss==1){
-       ///     nDialog.dismiss();///  if (user.isInputDataValid())
+       ///     nDialog.dismiss();///  if (client.isInputDataValid())
             String successMessage = "Login was successful";
             setToastMessage(successMessage);
             return;

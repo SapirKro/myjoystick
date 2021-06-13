@@ -2,24 +2,24 @@ package com.sapir.myjoystickapp.model;
 
 import androidx.annotation.NonNull;
 ///TODO CHANGE TO IP AND PORT AND EXPORT FROM XML
-public class User {
+public class Client {
     @NonNull
     private String mIP;
     @NonNull
     private String mPort;
 
-    public User(@NonNull final String ip, @NonNull final String port) {
+    public Client(@NonNull final String ip, @NonNull final String port) {
         mIP = ip;
         mPort = port;
     }
 
     @NonNull
-    public String getEmail() {
+    public String getIP() {
         return mIP;
     }
 
-    public void setEmail(@NonNull final String email) {
-        mIP = email;
+    public void setIP(@NonNull final String ip) {
+        mIP = ip;
     }
 
     @NonNull

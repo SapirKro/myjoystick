@@ -25,7 +25,7 @@ import com.wizchen.topmessage.util.TopActivityManager;
 public class MainActivity extends AppCompatActivity {
     SeekBar customSeekBar;
     SeekBar rudderSeekBar;
-    @RequiresApi(api = Build.VERSION_CODES.Q)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.print("first statement. ");
