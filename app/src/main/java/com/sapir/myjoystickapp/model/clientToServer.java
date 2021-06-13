@@ -32,18 +32,18 @@ public class clientToServer {
         isConnect=false;
         Log.d("clientToServer","server...");
     }*/
-    public clientToServer(String ip1) {
-        this.IP=ip1;
-        this.port=5400;
+    public clientToServer() {
+
         isConnect=false;
         Log.d("clientToServer","server...");
     }
+
     public int connectToServer() {
 
 int i=1;
         while (true) {
             try {
-                if(i>=3){
+                if(i>=10){
                     return 0;
                 }
                 Log.d("clientToServer","waiting for the server...try number "+i);

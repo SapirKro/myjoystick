@@ -33,6 +33,26 @@ public class LoginViewModel extends BaseObservable {
     public String toastMessage = null;
 
 
+    public void setUserEmail(String email) {
+        user.setEmail(email);
+        notifyPropertyChanged(BR.userEmail);
+    }
+
+    @Bindable
+    public String getUserEmail() {
+        return user.getEmail();
+    }
+
+    @Bindable
+    public String getUserPassword() {
+        return user.getPort();
+    }
+
+    public void setUserPassword(String password) {
+        user.setPort(password);
+        notifyPropertyChanged(BR.userPassword);
+    }
+
     public String getToastMessage() {
         return toastMessage;
     }
@@ -45,6 +65,7 @@ public class LoginViewModel extends BaseObservable {
     }
     public void update(){
         Log.d("lvm"," update .server status:"+this.s1.mystate);
+        nDialog.dismiss();
         if (this.s1.mystate==1){
             ///     nDialog.dismiss();///  if (user.isInputDataValid())
             String successMessage = "Login was successful";
@@ -53,16 +74,16 @@ public class LoginViewModel extends BaseObservable {
 
 
         }else{
-          String successMessage = "IP or Port not valid";
-            setToastMessage(successMessage);
+          String faMessage = "IP or Port not valid";
+            setToastMessage(faMessage);
            /// TopMessageManager.showSuccess("ASDADA");
         }
 
     }
-    public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2,String ip) {
+    public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2) {
 
         user = new User("", "");
-       this.c= new clientToServer(ip);
+       this.c= new clientToServer();
        this.pool= Executors.newFixedThreadPool(1);
       this.s1=new ConnectStatus(this);
       this.s1.mystate=-1;
@@ -206,8 +227,14 @@ this.nDialog=nDialog2;
      ///   testrunnable();
         String Message = "waiting for the server...";
         setToastMessage(Message);
+String myip=user.getEmail();
+String myport=user.getPort();
+int myport1=Integer.parseInt(myport);
 
+        c.setIP(myip);
+c.setPort(myport1);
        isClientConnet();
+        nDialog.show();
         return;
       /* int status=0;
         ConnectStatus x= new  ConnectStatus();

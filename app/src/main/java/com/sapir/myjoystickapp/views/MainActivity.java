@@ -41,16 +41,20 @@ public class MainActivity extends AppCompatActivity {
        MyNewJoystick joystick1 = findViewById(R.id.MyNewCOOLJoystick);
 
         ProgressDialog nDialog;
-        EditText ip =  findViewById(R.id.inEmail);
+     /*   EditText ip =  findViewById(R.id.inEmail);
+        EditText port =  findViewById(R.id.inPort);
+        String port1=port.getText().toString();
+
         String myip=ip.getText().toString();
+        int myPort=Integer.parseInt(port1);*/
 
         nDialog = new ProgressDialog(MainActivity.this);
-        nDialog.setMessage("Loading..");
-        nDialog.setTitle("Get Data");
+       nDialog.setMessage("Loading..");
+        nDialog.setTitle("trying to connect...");
         nDialog.setIndeterminate(false);
         nDialog.setCancelable(true);
 
-        LoginViewModel lvm=new LoginViewModel(joystick1 , nDialog,myip);
+        LoginViewModel lvm=new LoginViewModel(joystick1 , nDialog);
 
         MyNewJoystick.OnMoveListener   ll= new MyNewJoystick.OnMoveListener() {
             @Override
