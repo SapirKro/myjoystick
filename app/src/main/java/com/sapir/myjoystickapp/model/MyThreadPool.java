@@ -1,7 +1,5 @@
 package com.sapir.myjoystickapp.model;
 
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
 public class MyThreadPool {
 // Java program to illustrate
@@ -161,7 +159,7 @@ c.sendData(1);
 
     }
 
-    public static class conncetis extends Task {
+   /* public static class conncetis extends Task {
 
         final CountDownLatch latch;
         public conncetis(clientToServer c1,final CountDownLatch latch1,ConnectStatus s1 ) {
@@ -226,7 +224,7 @@ c.sendData(1);
         }
 
     }
-
+*/
 
 
    /* public static class Test

@@ -12,10 +12,7 @@ import com.sapir.myjoystickapp.model.User;
 import com.sapir.myjoystickapp.BR;
 import com.sapir.myjoystickapp.model.clientToServer;
 import com.sapir.myjoystickapp.views.MyNewJoystick;
-import com.wizchen.topmessage.TopMessageManager;
 
-
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -203,10 +200,10 @@ this.nDialog=nDialog2;
 
         int num= s1.mystate;*/
 
-        return ;
+
     }
 
-    public void testrunnable() {
+  /*  public void testrunnable() {
         MyThreadPool.RunnableExample[] randomNumberTasks = new MyThreadPool.RunnableExample[5];
 
         for (int i = 0; i < 5; i++)
@@ -217,8 +214,14 @@ this.nDialog=nDialog2;
 
         }
 
-    }
+    }*/
 
+    public void sendAlironAndElevtor(double x,double y){
+        if(s1.mystate==1){
+            Runnable r1 = new MyThreadPool.sendData(this.c,x,y,s1);
+
+            pool.execute(r1);}
+    }
     public void onLoginClicked() {
 
         if (this.s1.mystate == 1) {
@@ -229,13 +232,20 @@ this.nDialog=nDialog2;
         setToastMessage(Message);
 String myip=user.getEmail();
 String myport=user.getPort();
-int myport1=Integer.parseInt(myport);
+        int myport1=0;
+if((!(myport.equals("")))){
+myport1=Integer.parseInt(myport);}
+if(myip.equals("")){
+    myip="192.168.1.103";
+    myport1=5400;
 
+}
         c.setIP(myip);
 c.setPort(myport1);
+
        isClientConnet();
         nDialog.show();
-        return;
+
       /* int status=0;
         ConnectStatus x= new  ConnectStatus();
        //// nDialog.show();

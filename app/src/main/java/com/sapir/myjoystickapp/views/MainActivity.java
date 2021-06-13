@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+
 
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -56,13 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
         LoginViewModel lvm=new LoginViewModel(joystick1 , nDialog);
 
-        MyNewJoystick.OnMoveListener   ll= new MyNewJoystick.OnMoveListener() {
-            @Override
-            public void onMove(double x, double y) {
-                Log.d("fromMain","Ymove "+y);
-                Log.d("fromMain","Xmove "+x);
+        MyNewJoystick.OnMoveListener   ll= (x, y) -> {
+            Log.d("fromMain","Ymove "+y);
+            Log.d("fromMain","Xmove "+x);
+            lvm.sendAlironAndElevtor(x,y);
 
-            }
         };
         joystick1.setOnMoveListener(ll);
 

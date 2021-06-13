@@ -208,7 +208,9 @@ public class MyNewJoystick extends View  {
             y=anotherStratYLittleCIrcle;
              /*   if (mCallback != null)
                     mCallback.onMove(getAngle(), getStrength());*/
-            sendinfo(this.x,this.y);
+           /// sendinfo(this.x,this.y);
+            if (mCallback != null)
+                mCallback.onMove((getX(this.x)), (getY(this.y)));
             this.invalidate();
             return true;
         }
@@ -268,7 +270,7 @@ public class MyNewJoystick extends View  {
        if (mCallback != null)
             mCallback.onMove((getX(this.x)), (getY(this.y)));
 
-        sendinfo(this.x ,this.y);
+       /// sendinfo(this.x ,this.y);
         this.invalidate();
         return true;
 
@@ -329,7 +331,7 @@ return distanceXfromCenter;
 
 return    distanceYfromCenter;
     }
-public void sendinfo(float x ,float y){
+/*public void sendinfo(float x ,float y){
 double distanceXfromCenter=distance(x,0,this.anotherStratXLittleCIrcle ,0);
     double distanceYfromCenter=distance(0,y,0 ,this.anotherStratYLittleCIrcle);
     if(x<this.anotherStratXLittleCIrcle){
@@ -346,7 +348,7 @@ double distanceXfromCenter=distance(x,0,this.anotherStratXLittleCIrcle ,0);
         Runnable r1 = new MyThreadPool.sendData(c111,distanceXfromCenter,distanceYfromCenter,s1);
 
         pool.execute(r1);}
-}
+}*/
 
 
 }

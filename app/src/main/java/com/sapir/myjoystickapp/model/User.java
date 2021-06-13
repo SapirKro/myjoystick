@@ -4,22 +4,22 @@ import androidx.annotation.NonNull;
 ///TODO CHANGE TO IP AND PORT AND EXPORT FROM XML
 public class User {
     @NonNull
-    private String mEmail;
+    private String mIP;
     @NonNull
     private String mPort;
 
-    public User(@NonNull final String email, @NonNull final String Port) {
-        mEmail = email;
-        mPort = Port;
+    public User(@NonNull final String ip, @NonNull final String port) {
+        mIP = ip;
+        mPort = port;
     }
 
     @NonNull
     public String getEmail() {
-        return mEmail;
+        return mIP;
     }
 
     public void setEmail(@NonNull final String email) {
-        mEmail = email;
+        mIP = email;
     }
 
     @NonNull

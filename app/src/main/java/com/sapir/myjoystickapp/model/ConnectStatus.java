@@ -5,10 +5,10 @@ import com.sapir.myjoystickapp.viewmodels.LoginViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
+
 
 public class ConnectStatus extends Observable {
-    private List<LoginViewModel> observers = new ArrayList<LoginViewModel >();
+    private final List<LoginViewModel> observers = new ArrayList<>();
 
 
     public int mystate;
@@ -21,12 +21,8 @@ public class ConnectStatus extends Observable {
         mystate=num;
         notifyAllObservers();
     }
-    public int getState() {
-        return mystate;
-    }
-    public void attach(LoginViewModel observer){
-        observers.add(observer);
-    }
+
+
     private void notifyAllObservers() {
         for (LoginViewModel  observer : observers) {
             observer.update();
