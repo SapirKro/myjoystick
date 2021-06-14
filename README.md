@@ -22,7 +22,7 @@ The app using MVVM degin pattren:
 
 ## How To Use
 1. download flight gear from [this link](https://www.flightgear.org/download/).
-install and put the cmd in setting->additional setting:  
+install and put the followind commend in setting->additional setting:  
 `--telnet=socket,in,10,127.0.0.1,5400,tcp`
 2. **For phone: **[click here](https://pages.github.com/) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
 **For PC: ** download the repo the make sure you have emultor in your PC
