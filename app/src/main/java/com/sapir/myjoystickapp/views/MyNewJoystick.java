@@ -157,8 +157,7 @@ public class MyNewJoystick extends View {
     }
 
     public double distance(float x, float y, float centerx, float centery) {
-        double d = Math.sqrt((x - centerx) * (x - centerx) + (y - centery) * (y - centery));
-        return d;
+        return Math.sqrt((x - centerx) * (x - centerx) + (y - centery) * (y - centery));
     }
 
     public double getX(float x) {
