@@ -19,7 +19,7 @@ The app using MVVM degin pattren:
 **MyThreadPool** - A thredpool using the runnable interface.the threadpool has one thread that get work contintusly on diffrent tasks to communticate the server.
 
 ## How To Use
-1. download flight gear from [this link](https://pages.github.com/).
+1. download flight gear from [this link](https://www.flightgear.org/download/).
 install and put the cmd in setting->additional setting:  
 `--telnet=socket,in,10,127.0.0.1,5400,tcp`
 2. **For phone: **[click here](https://pages.github.com/) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
