@@ -1,6 +1,6 @@
  package com.sapir.myjoystickapp.model;
 
- ///todo add disconnect option
+
 
 import android.util.Log;
 

@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.print("first statement. ");
+
         Log.d("p", "create");
-        Log.d("p", "first statement");
+
 
         super.onCreate(savedInstanceState);
 
