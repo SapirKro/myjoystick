@@ -24,8 +24,8 @@ The app using MVVM degin pattren:
 1. download flight gear from [this link](https://www.flightgear.org/download/).
 install and put the followind commend in setting->additional setting:  
 `--telnet=socket,in,10,127.0.0.1,5400,tcp`
-2. **For phone: **[click here](https://pages.github.com/) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
-**For PC: ** download the repo the make sure you have emultor in your PC
+2. **For phone:** [click here](https://pages.github.com/) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
+**For PC:** download the repo the make sure you have emultor in your PC
 3. open the app and write your PC IP and port "5400" and press login.  
 **Note:** you can get your PC IP from the cmd.open the cmd and write the commend:
 `ipconfig`
