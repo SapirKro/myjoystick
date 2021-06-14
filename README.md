@@ -1,7 +1,8 @@
 # Joystick App
 
-![alt text](https://github.com/SapirKro/myjoystick/blob/master/screenshot/intro.png)  
-Joytick app allow you to remotely control the plane in flight gear.
+  <img src="https://github.com/SapirKro/myjoystick/blob/master/screenshot/intro.png" width=90% height=90%>  
+
+**Joytick app allow you to remotely control the plane in flight gear.**  
 
 ## Introduction
 This app is the final exerice in the course "Advanced Programming 2" (89211) in Bar Ilan University.
