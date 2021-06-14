@@ -32,5 +32,7 @@ right after press "fly" in the flight gear.the app will inform you if you succed
 
 Enjoy!
 
-## Video
-the video contain intrudection and short demo of the app:
+## Additional Information
+A short video contain intrudection and demo of the app:
+
+UML diagrm:
