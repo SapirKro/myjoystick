@@ -1,6 +1,6 @@
 # Joystick App
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/SapirKro/myjoystick/blob/master/screenshot/intro.png)  
 Joytick app allow you to remotely control the plane in flight gear.
 
 ## Introduction
