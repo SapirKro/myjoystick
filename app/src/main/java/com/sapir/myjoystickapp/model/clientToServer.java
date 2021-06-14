@@ -36,7 +36,7 @@ public class clientToServer {
 int i=1;
         while (true) {
             try {
-                if(i>=5){
+                if(i>=10){
                     if(!isConnect){
                     Log.d("clientToServer","failed to connect to server");}
                     return 0;
@@ -149,14 +149,21 @@ if(isConnect){
 
     }
 
-    public void closeClient() {
+    public int closeClient() {
         out.close();
 
         try {
             fg.close();
+
         } catch (IOException e) {
             System.out.println("Error closing Socket IOException e");
 
+        }
+        isConnect = fg.isConnected();
+        if(isConnect){
+            return 1;
+        }else{
+            return 0;
         }
     }
 

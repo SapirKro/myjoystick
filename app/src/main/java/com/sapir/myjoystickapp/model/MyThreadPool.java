@@ -54,8 +54,15 @@ public class MyThreadPool {
         }
         public void run()
         {
-            this.c.closeClient();
-            this.s2.mystate=0;
+            int num=this.c.closeClient();
+            if(num==1){
+                s2.setConnectStatus(1);
+                this.s2.mystate=1;
+            }
+            else{
+                s2.setConnectStatus(0);
+            }
+
 
         }
     }

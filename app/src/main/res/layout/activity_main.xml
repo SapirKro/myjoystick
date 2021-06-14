@@ -22,10 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:afterTextChanged="@{(editable)->viewModel.afterIPTextChanged(editable)}"
-            android:hint="192.168.1.103"
-            android:text="@={viewModel.clientIP}"
+            android:hint="192.168.1.102"
             android:inputType="text"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:text="@={viewModel.clientIP}" />
 
         <EditText
             android:id="@+id/inPort"

@@ -146,6 +146,7 @@ public class LoginViewModel extends BaseObservable {
     public void sendAlironAndElevtor(double x, double y) {
         if (s1.mystate == 1) {
             Runnable r1 = new MyThreadPool.sendData(this.c, x, y, s1);
+
             pool.execute(r1);
         }
     }
@@ -153,6 +154,13 @@ public class LoginViewModel extends BaseObservable {
     public void onLoginClicked() {
 
         if (this.s1.mystate == 1) {
+          /*  String Message = "disconnecting...";
+            setToastMessage(Message);
+            Runnable r2 = new MyThreadPool.DisconnectClientTask(this.c, s1);
+
+            pool.execute(r2);
+
+           */
             return;
         }
 
@@ -165,7 +173,7 @@ public class LoginViewModel extends BaseObservable {
             myport1 = Integer.parseInt(myport);
         }
         if (myip.equals("")) {
-            myip = "192.168.1.103";
+            myip = "192.168.1.102";
             myport1 = 5400;
 
         }
