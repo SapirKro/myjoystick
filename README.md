@@ -3,7 +3,7 @@
 Joytick app allow you to remotely control the plane in flight gear.
 
 ## Introduction
-This app is the final exerice in the course "Advanced Programming 2" (89221) in Bar Ilan University.
+This app is the final exerice in the course "Advanced Programming 2" (89211) in Bar Ilan University.
 The app using MVVM degin pattren:
 ### View:
 **MainActivity** - responsible for loading all the elements in the view.instilizaing a lodaing dialop and lister to the joystick movement.In this class I use the decoupling pronciple to send a data from the view to the viewmodel.(the lambda funtion for the joyustick listner)
