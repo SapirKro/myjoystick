@@ -35,6 +35,6 @@ right after press "fly" in the flight gear.the app will inform you if you succed
 Enjoy!
 
 ## Additional Information
-A short video contain intrudection and demo of the app:
-
-UML diagrm:
+A short video with more information and demo of the app:  
+https://youtu.be/TbgvJOa9pnE  
+Class diagrm:  
