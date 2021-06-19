@@ -23,3 +23,7 @@ your pc IP is the address in IPV4.
 right after press "fly" in the flight gear. The app will inform you if you succeed to login in.
 
 Enjoy!
+
+## Credits
+Music for the video by www.bensound.com  
+Vertical seek bar widget: [VerticalSeekBar](https://github.com/h6ah4i/android-verticalseekbar)
