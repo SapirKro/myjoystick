@@ -5,11 +5,11 @@
 **Joystick app allow you to remotely control the plane in flight gear.**  
 
 ## Introduction
-This app is the final exercise in the course "Advanced Programming 2" (89211)in Bar Ilan University.  
-The app use MVVM design pattern.   Further Information and a demo can be seen in the video below:
+This app is the final exercise in the course "Advanced Programming 2" (89211) in Bar Ilan University.  
+The app use MVVM design pattern.  Further Information and a demo can be seen in the video below:
 [![Joystick App](https://github.com/SapirKro/myjoystick/blob/master/embed.png?raw=true)](https://youtu.be/TbgvJOa9pnE "Joystick App")  
   Class diagram:  
-
+https://github.com/SapirKro/myjoystick/blob/master/diagrm.pdf
 ## How To Use
 1. Download flight gear from [this link](https://www.flightgear.org/download/).
 Install it and put the following commend in setting->additional setting:  
