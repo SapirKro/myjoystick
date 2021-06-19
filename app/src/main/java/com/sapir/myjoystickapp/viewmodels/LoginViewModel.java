@@ -23,7 +23,7 @@ public class LoginViewModel extends BaseObservable {
     ExecutorService pool;
     ConnectStatus s1;
     MyNewJoystick joy1;
-    ProgressDialog nDialog;
+  ////  ProgressDialog nDialog;
 
     @Bindable
     public String toastMessage = null;
@@ -62,7 +62,7 @@ public class LoginViewModel extends BaseObservable {
 
     public void update() {
         ///   Log.d("lvm"," update .server status:"+this.s1.mystate);
-        nDialog.dismiss();
+     ////   nDialog.dismiss();
         if (this.s1.mystate == 1) {
 
             String successMessage = "Login was successful";
@@ -76,7 +76,7 @@ public class LoginViewModel extends BaseObservable {
 
     }
 
-    public LoginViewModel(MyNewJoystick joyy2, ProgressDialog nDialog2) {
+    public LoginViewModel(MyNewJoystick joyy2) {
 
         client = new Client("", "");
         this.c = new clientToServer();
@@ -86,7 +86,7 @@ public class LoginViewModel extends BaseObservable {
         this.joy1 = joyy2;
 
 
-        this.nDialog = nDialog2;
+      ////  this.nDialog = nDialog2;
     }
 
     //// th from 0 to 1
@@ -180,7 +180,7 @@ public class LoginViewModel extends BaseObservable {
         c.setIP(myip);
         c.setPort(myport1);
         connetMyClient();
-        nDialog.show();
+      ////  nDialog.show();
 
     }
 }

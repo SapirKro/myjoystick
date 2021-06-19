@@ -4,6 +4,7 @@ package com.sapir.myjoystickapp.views;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -34,13 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         ProgressDialog nDialog;
 
-        nDialog = new ProgressDialog(MainActivity.this);
-        nDialog.setMessage("Loading..");
-        nDialog.setTitle("trying to connect...");
-        nDialog.setIndeterminate(false);
-        nDialog.setCancelable(true);
 
-        LoginViewModel lvm = new LoginViewModel(joystick1, nDialog);
+        LoginViewModel lvm = new LoginViewModel(joystick1);
 
         MyNewJoystick.onTouchEventListener ll = (x, y) -> {
             Log.d("fromMain", "Ymove " + y);
@@ -90,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
         activityMainBinding.setViewModel(lvm);

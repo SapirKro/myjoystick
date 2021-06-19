@@ -36,7 +36,7 @@ public class clientToServer {
 int i=1;
         while (true) {
             try {
-                if(i>=10){
+                if(i>=3){
                     if(!isConnect){
                     Log.d("clientToServer","failed to connect to server");}
                     return 0;
