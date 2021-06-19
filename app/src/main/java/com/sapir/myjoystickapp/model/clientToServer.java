@@ -12,7 +12,7 @@ import java.net.Socket;
 
 import java.io.IOException;
 
-
+////GGG
 ///fgfs --altitude=5000 --heading=0 --vc=110
 
 
