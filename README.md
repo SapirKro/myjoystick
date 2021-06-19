@@ -1,6 +1,6 @@
 # Joystick App
 
-  <img src="https://github.com/SapirKro/myjoystick/blob/master/screenshot/intro.png" width=90% height=90%>  
+  <img src="https://github.com/SapirKro/myjoystick/blob/master/screenshot/newnintro.png" width=90% height=90%>  
 
 **Joystick app allow you to remotely control the plane in flight gear.**  
 
