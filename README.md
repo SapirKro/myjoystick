@@ -37,6 +37,6 @@ Enjoy!
 ## Additional Information
 A short video with more information and demo of the app:  
 
-[![Joystick App](https://yt-embed.herokuapp.com/embed?v=StTqXEQ2l-Y)](https://youtu.be/TbgvJOa9pnE "Joystick App")
+[![Joystick App](https://github.com/SapirKro/myjoystick/blob/master/embed.png?raw=true)](https://youtu.be/TbgvJOa9pnE "Joystick App")
 
 Class diagrm:  
