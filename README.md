@@ -5,7 +5,7 @@
 **Joytick app allow you to remotely control the plane in flight gear.**  
 
 ## Introduction
-This app is the final exerice in the course "Advanced Programming 2" (89211) in Bar Ilan University.
+This app is the final exercise in the course "Advanced Programming 2" (89211) in Bar Ilan University.
 The app using MVVM degin pattren:
 ### View:
 **MainActivity** - responsible for loading all the elements in the view.instilizaing a lodaing dialop and lister to the joystick movement.In this class I use the decoupling pronciple to send a data from the view to the viewmodel.(the lambda funtion for the joyustick listner)
@@ -24,8 +24,8 @@ The app using MVVM degin pattren:
 1. download flight gear from [this link](https://www.flightgear.org/download/).
 install and put the followind commend in setting->additional setting:  
 `--telnet=socket,in,10,127.0.0.1,5400,tcp`
-2. **For phone:** [click here](https://pages.github.com/) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
-**For PC:** download the repo the make sure you have emultor in your PC
+2. **For phone:** [click here](https://github.com/SapirKro/myjoystick/blob/master/myjoystickapp.apk) to download the app and install it on your phone.(make sure intaliing unaturize app ia allow in the setting)  
+**For PC:** Clone the repo and make sure you have emulator on your PC
 3. open the app and write your PC IP and port "5400" and press login.  
 **Note:** you can get your PC IP from the cmd.open the cmd and write the commend:
 `ipconfig`
